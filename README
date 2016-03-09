@@ -1,0 +1,6 @@
+Wed Mar  9 21:39:10 AEDT 2016
+James S. Crook
+
+To build tdb (tested on Linux, AIX, Cygwin)
+
+$ make
