@@ -1,0 +1,329 @@
+#Category       item           P/A    price  year mo dy
+#############   ##############  #    ######  #### ## ##
+Home            Mortgage        P  -1000.00  1998
+                                                  01 24
+                                                  02 24
+                                                  03 24
+                                                  04 24
+                                                  05 24
+                                                  06 24
+                                                  07 24
+                                                  08 24
+                                                  09 24
+                                                  10 24
+                                                  11 24
+                                                  12 24
+Home            Bathroom        P -10000.00  1998 10 03
+Home            Insurance       P    -90.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Home            "Council Rates" P   -200.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Car             Insurance       P   -500.00  1998 03 01
+Car             Fuel            P    -85.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Car             Registration    P   -350.00  1998 03 01
+Car             Maintenance     P   -190.00  1998
+                                                  03 01
+                                                  09 01
+Income          "Net pay"       P   2500.00  1998
+                                                  01 24
+                                                  02 24
+                                                  03 24
+                                                  04 24
+                                                  05 24
+                                                  06 24
+                                                  07 24
+                                                  08 24
+                                                  09 24
+                                                  10 24
+                                                  11 24
+                                                  12 24
+Reading         Estimate        P    -30.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Toys            Estimate        P    -50.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Entertainment   Restaurant      P    -50.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Utilities       "Natural gas"   P    -70.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Utilities       Electricity     P   -150.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Utilities       Telephone       P    -80.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Food            Groceries       P   -500.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Alcohol         Beer            P    -10.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Alcohol         Wine            P    -30.00  1998
+                                                  01 01
+                                                  02 01
+                                                  03 01
+                                                  04 01
+                                                  05 01
+                                                  06 01
+                                                  07 01
+                                                  08 01
+                                                  09 01
+                                                  10 01
+                                                  11 01
+                                                  12 01
+Clothes         Estimate        P   -200.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Furniture       Estimate        P   -500.00  1998 01 01
+Hardware        Estimate        P   -500.00  1998 01 01
+############################################################
+Home            Mortgage        A  -1000.00  1998
+                                                  01 24
+                                                  02 24
+                                                  03 24
+                                                  04 24
+                                                  05 24
+                                                  06 24
+                                                  07 24
+                                                  08 24
+                                                  09 24
+                                                  10 24
+                                                  11 24
+                                                  12 24
+Home            "Council Rates" A   -200.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Home            Insurance       A   -112.00  1998       # quarterly
+                                                  03 01
+                                                  06 01
+                                                  09 01
+                                                  12 01
+Income          "Net pay"       A   2517.42  1998
+                                                  01 24
+                                                  02 24
+                                                  03 24
+                                                  04 24
+                                                  05 24
+                                                  06 24
+                                                  07 24
+                                                  08 24
+                                                  09 24
+                                                  10 24
+                                                  11 24
+                                                  12 24
+############################################################
+Clothes         Shirts          A    -90.00  1998 01 01
+Furniture       "Dining table"  A  -5000.00  1998 01 01
+Furniture       Television      A   -800.00  1998 01 01
+Hardware        "Door locks"    A   -180.00  1998 01 01
+Reading         Books           A   -122.00  1998 01 01
+Toys            Bikes           A    -10.00  1998 01 01
+Food            Groceries       A   -123.43  1998 01 03
+Car             Fuel            A    -40.00  1998 01 09
+Food            Groceries       A   -103.43  1998 01 09
+Food            Groceries       A   -123.43  1998 01 13
+Entertainment   Restaurant      A    -40.00  1998 01 15
+Food            Groceries       A   -193.43  1998 01 16
+Food            Groceries       A   -193.43  1998 01 16
+Alcohol         Beer            A    -12.00  1998 01 19
+Car             Fuel            A    -40.00  1998 01 19
+Food            Groceries       A   -103.43  1998 01 19
+Alcohol         Wine            A   -112.00  1998 02 01
+Toys            Games           A    -20.00  1998 02 01
+Car             Fuel            A    -38.00  1998 02 09
+Food            Groceries       A   -113.22  1998 02 10
+Food            Groceries       A   -123.43  1998 02 10
+Entertainment   Restaurant      A    -20.00  1998 02 15
+Car             Fuel            A    -38.00  1998 02 19
+Food            Groceries       A   -113.22  1998 02 20
+Food            Groceries       A   -123.43  1998 02 20
+Entertainment   Video           A    -14.00  1998 02 31
+Clothes         Shirts          A    -26.00  1998 03 01
+Clothes         Shoes           A   -120.00  1998 03 01
+Hardware        Tools           A    -30.00  1998 03 01
+Toys            "Sports gear"   A   -100.00  1998 03 01
+Toys            Games           A    -30.00  1998 03 01
+Utilities       "Natural gas"   A   -100.00  1998 03 01
+Utilities       Electricity     A   -200.00  1998 03 01
+Food            Groceries       A   -109.75  1998 03 04
+Food            Groceries       A   -223.43  1998 03 12
+Food            Groceries       A   -223.43  1998 03 12
+Car             Insurance       A   -495.00  1998 03 13
+Entertainment   Restaurant      A    -30.00  1998 03 15
+Car             Registration    A   -395.00  1998 03 17
+Alcohol         Beer            A    -15.00  1998 03 19
+Food            Groceries       A   -109.75  1998 03 24
+Entertainment   Video           A     -9.00  1998 03 31
+Car             Fuel            A    -32.00  1998 04 09
+Car             Fuel            A    -39.00  1998 04 09
+Food            Groceries       A   -123.43  1998 04 12
+Entertainment   Restaurant      A    -40.00  1998 04 15
+Alcohol         Beer            A    -10.00  1998 04 19
+Alcohol         Beer            A    -14.00  1998 04 19
+Car             Fuel            A    -32.00  1998 04 19
+Car             Fuel            A    -39.00  1998 04 19
+Food            Groceries       A   -123.43  1998 04 22
+Entertainment   Cinema          A    -55.00  1998 04 31
+Entertainment   Theatre         A    -95.00  1998 04 31
+Entertainment   Video           A     -7.00  1998 04 31
+Alcohol         Wine            A    -12.00  1998 05 01
+Clothes         Shirts          A    -40.00  1998 05 01
+Food            Groceries       A   -200.43  1998 05 01
+Food            Groceries       A   -200.43  1998 05 01
+Car             Maintenance     A   -220.00  1998 05 09
+Entertainment   Restaurant      A    -20.00  1998 05 15
+Food            Groceries       A   -123.45  1998 06 01
+Food            Groceries       A   -143.43  1998 06 01
+Hardware        "TV Antenna"    A   -190.00  1998 06 01
+Utilities       "Natural gas"   A   -110.00  1998 06 01
+Utilities       Electricity     A   -210.00  1998 06 01
+Car             Fuel            A    -45.00  1998 06 09
+Food            Groceries       A   -123.45  1998 06 11
+Entertainment   Restaurant      A    -30.00  1998 06 15
+Alcohol         Beer            A    -10.00  1998 06 19
+Car             Fuel            A    -45.00  1998 06 19
+Food            Groceries       A   -143.43  1998 06 21
+Clothes         Shirts          A   -115.00  1998 07 01
+Clothes         Shoes           A   -170.00  1998 07 01
+Food            Groceries       A   -133.73  1998 07 01
+Food            Groceries       A   -133.73  1998 07 01
+Car             Fuel            A    -35.00  1998 07 09
+Entertainment   Restaurant      A    -50.00  1998 07 15
+Alcohol         Beer            A    -15.00  1998 07 19
+Car             Fuel            A    -35.00  1998 07 19
+Entertainment   Video           A     -9.00  1998 07 31
+Food            Groceries       A   -163.43  1998 08 01
+Hardware        Tools           A    -25.00  1998 08 01
+Hardware        Tools           A   -450.00  1998 08 05
+Car             Fuel            A    -37.50  1998 08 09
+Food            Groceries       A   -163.43  1998 08 11
+Entertainment   Restaurant      A    -90.00  1998 08 15
+Alcohol         Beer            A    -13.00  1998 08 19
+Car             Fuel            A    -37.50  1998 08 19
+Alcohol         Wine            A   -132.00  1998 09 01
+Clothes         Shoes           A    -99.00  1998 09 01
+Food            Groceries       A   -193.93  1998 09 01
+Food            Groceries       A   -193.93  1998 09 01
+Toys            Games           A    -30.00  1998 09 01
+Toys            "Sports gear"   A    -30.00  1998 09 01
+Toys            Games           A    -30.00  1998 09 01
+Utilities       "Natural gas"   A   -120.00  1998 09 01
+Utilities       Electricity     A   -220.00  1998 09 01
+Car             Fuel            A    -40.00  1998 09 09
+Utilities       Telephone       A   -152.00  1998 09 13
+Entertainment   Restaurant      A   -100.00  1998 09 15
+Alcohol         Beer            A    -19.00  1998 09 19
+Car             Fuel            A    -40.00  1998 09 19
+Entertainment   Video           A     -5.00  1998 09 31
+Entertainment   Video           A     -7.00  1998 09 31
+Clothes         Shoes           A   -130.00  1998 10 01
+Food            Groceries       A   -183.80  1998 10 01
+Food            Groceries       A   -183.80  1998 10 01
+Furniture       Bed             A   -120.00  1998 10 01
+Furniture       Lamp            A   -120.00  1998 10 01
+Home            Bathroom        A  -7000.00  1998 10 03
+Car             Fuel            A    -36.00  1998 10 09
+Utilities       Telephone       A   -182.00  1998 10 13
+Alcohol         Beer            A    -10.00  1998 10 19
+Car             Fuel            A    -36.00  1998 10 19
+Entertainment   Cinema          A    -45.00  1998 10 31
+Food            Groceries       A   -163.43  1998 11 01
+Reading         Books           A   -122.00  1998 11 01
+Reading         Journals        A   -122.00  1998 11 01
+Car             Fuel            A    -36.00  1998 11 09
+Utilities       Telephone       A   -133.00  1998 11 13
+Alcohol         Beer            A    -10.00  1998 11 19
+Car             Fuel            A    -36.00  1998 11 19
+Car             Maintenance     A   -193.75  1998 11 19
+Food            Groceries       A   -163.43  1998 11 27
+Clothes         Shoes           A   -160.00  1998 12 01
+Food            Groceries       A   -183.43  1998 12 01
+Utilities       "Natural gas"   A   -110.00  1998 12 01
+Utilities       Electricity     A   -210.00  1998 12 01
+Car             Fuel            A    -36.00  1998 12 09
+Utilities       Telephone       A   -202.00  1998 12 13
+Alcohol         Beer            A    -11.00  1998 12 19
+Car             Fuel            A    -36.00  1998 12 19
+Food            Groceries       A   -183.43  1998 12 29
+Income          "Net bonus"     A   1000.00  1998 12 31

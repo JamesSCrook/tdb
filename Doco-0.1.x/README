@@ -1,0 +1,18 @@
+# tdb was (and is) an academic exercise.
+# It's not even close to being "production quality" code.
+# tdb is in dire need of seatbelts and airbags.
+# If you feed it valid input, AFAIK, tdb will generate correct output.
+# If you feed it bad input, you will very likely get core dumps. You have been warned.
+# If it's useful to you, great. If it's not, please don't complain to me about it.
+#
+# James S. Crook
+# Sat Dec 19 11:07:17 AEDT 2015
+
+# To build the doco:
+BASENAME=tdb_Users_Guide-0.1; groff -Tascii -P-c $BASENAME > $BASENAME.n
+
+# Or possibly:
+# BASENAME=tdb_Users_Guide-0.1; nroff -Tascii $BASENAME > $BASENAME.n
+#
+#
+# For a browser to render it, remove the overstriking.

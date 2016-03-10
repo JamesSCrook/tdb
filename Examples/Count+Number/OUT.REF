@@ -1,0 +1,26 @@
+
+The 'count' of times each fruit was purchased
+at each store; fruit and store are both sorted
+by the least number of purchases.
+
+            Joe's  Fred's Anne's Sue's  Bob's    TOTALS
+quinces       0      0      2      0      0        2
+apples        2      1      1      2      1        7
+bananas       0      3      2      4      0        9
+cherries      0      1      1      1      7       10
+
+TOTALS        2      5      6      7      8       28
+
+An 'X' indicates a particular fruit was purchased
+at a particular store (one or more times).  Fruits
+are sorted by the most purchased fruit.  Stores
+use default (alpha/numeric) sorting by that field.
+
+            Anne's Bob's  Fred's Joe's  Sue's    ALL_STORES
+
+apples        X      X      X      X      X           5
+cherries      X      X      X      .      X           4
+bananas       X      .      X      .      X           3
+quinces       X      .      .      .      .           1
+
+ALL           4      2      3      1      3

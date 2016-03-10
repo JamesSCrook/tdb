@@ -1,0 +1,21 @@
+# first select the data for the visual inspection area for the week
+# of interest, then pipe it to the report program.
+
+STARTDATE=19990621; ENDDATE=19990625
+tdb -f fields -s weeklyvis.s -I startdate=$STARTDATE \
+   -I enddate=$ENDDATE data | \
+tdb -f fields -r weeklyvis.r -S fcdexpansionfile=fltcodexpans \
+  -I startdate=$STARTDATE -I enddate=$ENDDATE \
+  -S "titlestr=Visual Inspection Area Summary Report - by Fault" -
+
+######################################################################
+# first select the data for the visual inspection area for the week
+# of interest, then pipe it to the report program.
+
+STARTDATE=19990614; ENDDATE=19990618
+
+tdb -f fields -s weeklyvis.s -I startdate=$STARTDATE \
+  -I enddate=$ENDDATE data | \
+tdb -f fields -r weeklyvis.r -S fcdexpansionfile=fltcodexpans \
+  -I startdate=$STARTDATE -I enddate=$ENDDATE \
+  -S "titlestr=Visual Inspection Area Summary Report - by Fault" -

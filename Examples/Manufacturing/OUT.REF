@@ -1,0 +1,132 @@
+
+ACME Manufacturing Report                                19, Dec 2015 21:18
+
+                Visual Inspection Area Summary Report - by Fault
+                ================================================
+                    Period from: 99/06/21 to: 99/06/25
+
+Fault                         Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+Bad comp
+  Total time (MM:SS)    :             18:00            1:30    1:30   21:00
+  Total faults processed:                12               1       1      14
+  Average/fault (MM:SS) :              1:30            1:30    1:30    1:30
+
+Missing
+  Total time (MM:SS)    :                      3:00   10:30           13:30
+  Total faults processed:                         2       7               9
+  Average/fault (MM:SS) :                      1:30    1:30            1:30
+
+Rev/rotate
+  Total time (MM:SS)    :      6:00   15:00    0:09                   21:09
+  Total faults processed:         4      10       1                      15
+  Average/fault (MM:SS) :      1:30    1:30    0:09                    1:24
+
+Sold Open
+  Total time (MM:SS)    :                              1:30            1:30
+  Total faults processed:                                 1               1
+  Average/fault (MM:SS) :                              1:30            1:30
+
+Sold Short
+  Total time (MM:SS)    :                              1:30            1:30
+  Total faults processed:                                 1               1
+  Average/fault (MM:SS) :                              1:30            1:30
+
+Tolerance
+  Total time (MM:SS)    :                      3:00                    3:00
+  Total faults processed:                         2                       2
+  Average/fault (MM:SS) :                      1:30                    1:30
+
+                           ================================================
+Overall time spent (HH:MM):    0:06    0:33    0:06    0:15    0:01    1:01
+Overall faults processed  :       4      22       5      10       1      42
+Overall avg/fault (MM:SS) :    1:30    1:30    1:13    1:30    1:30    1:28
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                19, Dec 2015 21:18
+
+                Visual Inspection Area Summary Report - by Fault
+                ================================================
+                    Period from: 99/06/14 to: 99/06/18
+
+Fault                         Mon     Tue     Thu     Total
+------------------------     ------  ------  ------  ------ 
+Alignment
+  Total time (MM:SS)    :      0:30                    0:30
+  Total faults processed:         1                       1
+  Average/fault (MM:SS) :      0:30                    0:30
+
+Cop Open
+  Total time (MM:SS)    :                      4:50    4:50
+  Total faults processed:                         1       1
+  Average/fault (MM:SS) :                      4:50    4:50
+
+Equip prob
+  Total time (MM:SS)    :      1:30                    1:30
+  Total faults processed:         1                       1
+  Average/fault (MM:SS) :      1:30                    1:30
+
+Faulty
+  Total time (MM:SS)    :              0:10            0:10
+  Total faults processed:                 1               1
+  Average/fault (MM:SS) :              0:10            0:10
+
+Unseated
+  Total time (MM:SS)    :              0:50            0:50
+  Total faults processed:                 1               1
+  Average/fault (MM:SS) :              0:50            0:50
+
+Wrong
+  Total time (MM:SS)    :                      8:10    8:10
+  Total faults processed:                         1       1
+  Average/fault (MM:SS) :                      8:10    8:10
+
+                           ================================
+Overall time spent (HH:MM):    0:02    0:01    0:13    0:16
+Overall faults processed  :       2       2       2       6
+Overall avg/fault (MM:SS) :    1:00    0:30    6:30    2:40
+                           ================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+

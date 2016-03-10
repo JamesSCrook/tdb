@@ -1,0 +1,4 @@
+string	name
+int	height
+float	mass
+int	score

@@ -1,0 +1,1 @@
+time tdb -v -d , -1 -f vbg.f -r vbg.r -o vbg.o videos_by_genre.csv

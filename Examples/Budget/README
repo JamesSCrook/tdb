@@ -1,0 +1,13 @@
+This illustrates two different approaches to solving the same problem.
+
+First, a single tdb program that uses "brute force" to calculate the totals
+and subtotals.
+This is scr1 and bothpasses.r
+
+scr1 data			# to see the output
+scr1 data | diff OUT.REF -	# no differences means tdb is working
+
+Second, a two-pass approach is used to simplify the report writing process.
+This is scr2, pass1.r and pass2.r.
+scr2 data			# to see the output
+scr2 data | diff OUT.REF -	# no differences means tdb is working

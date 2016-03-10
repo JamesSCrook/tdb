@@ -1,0 +1,27 @@
+########################################################################
+# Product Type (pty) File
+#
+# A = CPU Board
+########################################################################
+AF "CPU, Rev 6" AFddd-ddd AF%3-%3 data/cpu_6/AF$1-$2 crffiledir/cpu_6
+    size        250 250
+    side1data   0  -50  10  25
+    side2data   0  -50  10  25
+    side1xgrid "1:ABCDEFGHIJKLMNOPQRSTUVWXYZ!@"
+    side1ygrid "2:1*2*3*4*5*6*7*8*9*10111213141516171819202122232425262728"
+
+# B = Memory board
+########################################################################
+BC "Memory, Rev 3" BCddd-ddd BC%3-%3 data/memory_3/BC$1-$2 \
+							crffiledir/memory_3
+    size        250 250
+    side1data   0  -50  10  25
+    side2data   0  -50  10  25
+
+# Q = 747 guidance board
+########################################################################
+QF "747 Guidance, Rev 6" QFddd-ddd QF%3-%3 data/dunno_6/QF$1-$2 \
+							crffiledir/dunno_6
+    size        250 250
+    side1data   0  -50  10  25
+    side2data   0  -50  10  25

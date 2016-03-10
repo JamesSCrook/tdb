@@ -1,0 +1,8 @@
+tdb-0.0.1 Initial version
+
+tdb-0.0.2 Replaced re_exec and re_comp with regexec and regcomp
+
+tdb-0.1.0 Added new command line options
+	  arbitrary delimiter(s), e.g., "-d ," for CSV files
+	  arbitrary quote character, e.g., "-q '|'"
+	  The first new feature in 24 years! (You can't rush these things...)

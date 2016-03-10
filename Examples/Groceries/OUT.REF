@@ -1,0 +1,113 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<avgexpend.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  Store                                      Average Expenditure
+  -----------------------------------        -------------------
+Apples                                        2.14
+  Franklins, Cherrybrook                                    1.00
+  Franklins, Pennant Hills                                  5.00
+
+Bananas                                       5.50
+  Franklins, Pennant Hills                                  1.00
+  Coles, Lindfield                                          4.00
+  Coles, Hornsby                                            6.00
+  Franklins, Cherrybrook                                   11.00
+
+Beer (Coopers Ale)                           10.80
+  Coles, Hornsby                                           10.80
+
+Beer (VB)                                    14.50
+  Coles, Cherrybrook                                        3.00
+  Franklins, Hornsby                                       15.00
+  Coles, Hornsby                                           24.00
+
+Bread (wholegrain)                            1.80
+  Franklins, Cherrybrook                                    1.80
+
+Coca-cola                                    15.80
+  Franklins, Cherrybrook                                   14.80
+  Wa-Fong's, Chatswood                                     16.80
+
+Orages                                        1.95
+  Franklins, Cherrybrook                                    1.95
+
+Sultanas (Jones)                              1.88
+  Franklins, Cherrybrook                                    1.88
+
+Sultanas (Smith)                              1.62
+  Franklins, Cherrybrook                                    1.62
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<avgunitpr.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                                         Avg. Price / Qty.
+  Store                                     ($/unit)
+  -----------------------------------    -----------------
+Apples (kg)
+ Franklins, Cherrybrook                               1.00
+ Franklins, Pennant Hills                             3.33
+
+Bananas (kg)
+ Coles, Hornsby                                       6.00
+ Coles, Lindfield                                     4.00
+ Franklins, Cherrybrook                              11.00
+ Franklins, Pennant Hills                             1.00
+
+Beer (Coopers Ale) (l)
+ Coles, Hornsby                                       4.80
+
+Beer (VB) (l)
+ Coles, Cherrybrook                                   4.00
+ Coles, Hornsby                                       2.67
+ Franklins, Hornsby                                   4.44
+
+Bread (wholegrain) (kg)
+ Franklins, Cherrybrook                               2.57
+
+Coca-cola (l)
+ Franklins, Cherrybrook                               1.64
+ Wa-Fong's, Chatswood                                 1.87
+
+Orages (kg)
+ Franklins, Cherrybrook                               1.95
+
+Sultanas (Jones) (kg)
+ Franklins, Cherrybrook                               5.00
+
+Sultanas (Smith) (kg)
+ Franklins, Cherrybrook                               4.33
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<avgunitprsrt.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                                         Avg. Price / Qty.
+  Store                                     ($/unit)
+  -----------------------------------    -----------------
+Apples (kg)                               1.88
+ Franklins, Cherrybrook                               1.00
+ Franklins, Pennant Hills                             3.33
+
+Bananas (kg)                              5.50
+ Franklins, Pennant Hills                             1.00
+ Coles, Lindfield                                     4.00
+ Coles, Hornsby                                       6.00
+ Franklins, Cherrybrook                              11.00
+
+Beer (Coopers Ale) (l)                    4.80
+ Coles, Hornsby                                       4.80
+
+Beer (VB) (l)                             3.74
+ Coles, Hornsby                                       2.67
+ Coles, Cherrybrook                                   4.00
+ Franklins, Hornsby                                   4.44
+
+Bread (wholegrain) (kg)                   2.57
+ Franklins, Cherrybrook                               2.57
+
+Coca-cola (l)                             1.76
+ Franklins, Cherrybrook                               1.64
+ Wa-Fong's, Chatswood                                 1.87
+
+Orages (kg)                               1.95
+ Franklins, Cherrybrook                               1.95
+
+Sultanas (Jones) (kg)                     5.00
+ Franklins, Cherrybrook                               5.00
+
+Sultanas (Smith) (kg)                     4.33
+ Franklins, Cherrybrook                               4.33
+

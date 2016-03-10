@@ -1,0 +1,791 @@
+.nh		." no hyphenation
+.po 0
+.lt 80
+.ll 80
+.pl 66
+.de he
+.tl 'tdb - A Text Database Utility''Version 0.1'
+'sp 1
+..
+.de fo
+'sp 1
+.tl '1991-2015'-%-'James S. Crook'
+..
+.wh 0 he
+.wh -2 fo
+\# =====================================================================
+\# jcmacros (nroff macros)
+\# James S. Crook 90/10/25
+\#
+\# Section Header (SH) macro
+\# For doing section headers (with up to 3 leves).  This macro takes two
+\# arguments: the level and the header text.  Legal levels are 1, 2 or 3.
+\# It should be invoked as follows:
+\# .SH 1 "Section Header"		-> 3. Section Header
+\# .SH 2 "Sub-Section Header"		-> 3.1. Sub-Section Header
+\# .SH 3 "Sub-Sub-Section Header"	-> 3.1.1. Sub-Sub-Section Header
+\# --------------------------------------------------------
+.nr S1 0	." initialize counters for levels 1,2,3
+.nr S2 0
+.nr S3 0
+.nr SP 0	." set previous SH level to zero
+.de SH
+.sp 2
+.ne 4		." if there aren't enough lines (to page end), break page
+.ie \\$1=1 \{\
+\#			<<<START OF LEVEL 1>>>
+.nr S1 \\n(S1+1		." increment level 1 counter
+.cu
+\\n(S1. \\$2
+.nr S2 0		." set up for next time
+.nr S3 0
+.nr SP 1
+\#			<<<END OF LEVEL 1>>>
+\}
+.el \{\
+.ie \\$1=2 \{\
+\#			<<<START OF LEVEL 2>>>
+.nr S2 \\n(S2+1		." increment level 2 counter
+.if \\n(SP<1 .nr S1 \\n(S1+1 1	." if prev_lev < 1, increment lev 1 counter
+.cu
+\\n(S1.\\n(S2. \\$2
+.nr S3 0		." set up for next time
+.nr SP 2
+\#			<<<END OF LEVEL 2>>>
+\}
+.el \{\
+\#			<<<START OF LEVEL 3>>>
+.nr S3 \\n(S3+1		." increment level 3 counter
+.if \\n(SP<2 .nr S2 \\n(S2+1 1	." if prev_lev < 2, increment lev 2 counter
+.if \\n(SP<1 .nr S1 \\n(S1+1 1	." if prev_lev < 1, increment lev 1 counter
+.cu
+\\n(S1.\\n(S2.\\n(S3. \\$2
+.nr SP 3		." set up for next time
+\#			<<<END OF LEVEL 3>>>
+\}
+\}
+.sp
+..
+\# =====================================================================
+\# ---------------------------------------------------------------------
+\# List macros.  There are 4 macros in this group, FL, SL, LI and LE.
+\# These stand for Formatted List, String List, List Item, and List End,
+\# respectively.  Lists are invoked as follows:
+\# .FL c	(where c is a legal format code: 1, i, I, A, a, 001, etc)
+\#		(See the .af request in the nroff manual for more details.)
+\# .FS s	(where s is any string: -, ->, "- -", etc)
+\# The .LI macro should be used once before each list item.
+\# The .LE macro should be used once after the last list item.
+\# THEY CANNOT BE NESTED!!!
+\# ---------------------------------------------------------------------
+\#			<<<START OF FL>>>
+.de FL
+'in +6		." indent for the list
+.nr Lc 0 1	." set the List counter (Lc) to zero
+.af Ld \\$1	." this second counter (Ld) is needed because register addition
+\#		   doesn't seem to work when .af is used.
+..
+\#			<<<START OF SL>>>
+.de SL
+'in +6		." indent for the list
+.nr Lc 0-1	." set counter (Lc) so LI will know this list is an SL
+\#		." set the List string (Ls) to be argument 1 of .SL
+.ds Ls \\$1
+..
+\#			<<<START OF LI>>>
+.de LI
+'br
+\#		    if this is a Formatted List (FL)
+.ie \\n(Lc>-1 \{\
+.nr Lc \\n(Lc+1		." increment the counter (Lc)
+.nr Ld \\n(Lc		." set the second counter (Ld) to Lc
+.ti -\w'\\n(Ld. 'u	." do the backwards temp indent, & print the list header
+\\n(Ld.\
+\}
+\#		    else it must be a String List (SL)
+.el \{\
+.ti -\w'\\*(Ls 'u	." do the backwards temp indent, & print the list header
+\\*(Ls\
+\}
+..
+\#			<<<START OF LE>>>
+.de LE
+.br
+.in -6		." set the indent back to what it was before the list started
+..
+\# -------------- added to salvage the mm macros ---------------------------
+.de P
+.sp
+..
+.de B
+.ul
+\\$1
+..
+.de BR
+\fI\\$1\fR\\$2
+..
+.de RB
+\\$1\fI\\$2\fR\\$3
+..
+\# -------------------------------------------------------------------------
+
+
+.ce
+.B "tdb - A Text Database Utility"
+
+.SH 1 "Overview"
+tdb is a report writing utility base on reading text "database" files.
+It is a non relational system.
+
+tdb requires a metadata description of the layout of the text files.
+This file is called the FIELDs file; it serves as the "data dictionary".
+
+A program file is also required, depending upon which of tdb's two modes
+(select or report) is used.
+
+Note: square brackets `[]' are used to indicate something is optional, and
+ellipses (...) are used to indicate that the item(s) preceding the ellipsis
+may be (optionally) repeated multiple times.
+.SH 1 "FIELD Files"
+A FIELD file serves the most basic purpose of the data dictionary in an RDBMS -
+that is, it describes the data.  There are three FIELD types: int, float,
+and string. FIELDs are declared on one line using the type and the name,
+separated by "white space" (one or more space and/or tab characters).
+FIELD files may contain comments (anything after a '#' character).
+Here is an example of a FIELD file with four FIELDs:
+
+.nf
+\f2string\f1   name		# student name
+\f2int\f1      department	# department number
+\f2int\f1      course		# course number
+\f2float\f1    score		# score for one exam, out of 100
+# +-+ yet more inane commentary +-+
+.fi
+.SH 1 "Data Files and Data Directories"
+.SH 2 "Data Files"
+Data files consist of text records.
+Each record consist of FIELDs of text separated by "white space" (by default),
+or a delimiter character specified on the command line (-d '<char>').
+
+String FIELDs may contain delimiter character(s) by surrounding them with
+the quote character (default double quote): "Tux T. Penguin"
+
+A different quote character may be specified on the command line, e.g., "-q '|'"
+.SH 3 "White Space Delimited Data Files"
+This is the default delimiting style.
+There are two valid formats for data records: all the FIELDs are on one line,
+or FIELDs split across two lines.
+The first FIELD of a data record must start at the beginning of a line.
+Lines starting with "white space" are a continuation of a previous line.
+As an example of the simplest case, here is valid a data record for the
+preceding FIELD file:
+
+"Tux T. Penguin" 42 101 88.5
+
+Data records beginning with "white space"
+are considered to be continuations of the most recent previous record that
+started at the beginning of the line.  For example, all of the
+following sample data files represent exactly the same data.
+
+.nf
+.ne 4
+Example 1:
+"Tux T. Penguin" 42 101 88.5
+"Tux T. Penguin" 42 104 92.4
+"Tux T. Penguin" 24  52 64.2
+.fi
+
+.nf
+.ne 5
+Example 2:
+"Tux T. Penguin"
+        42 101 88.5
+        42 104 92.4
+        24  52 64.2
+.fi
+
+.nf
+.ne 6
+Example 3:
+"Tux T. Penguin" 42
+    101 88.5
+    104 92.4
+"Tux T. Penguin" 24
+     52 64.2
+.fi
+
+"White space" delimited data files may also contain comments.
+All text after a comment character
+(`#') is ignored.  The comment character may be included as data by surrounding
+it with quote characters (by default, double quote: "#").
+.SH 3 "Command Line Specified Single Character Delimited Data Files"
+The FIELDs are delimited by a single character, specified on the command line.
+For example, a CSV (Comma Separated Value) file could be used by
+invoking '-d ,' on the command line.
+
+Comments are not allowed in single character delimited data files.
+
+Quoting text is the same for both formats of data file.
+.SH 2 "Data Directories"
+Whenever a tdb command line data argument is a directory,
+tdb traverses that directory tree,
+opening all files in turn.  Each file is processed in exactly the same manner
+as if it were specified individually (see above).  This permits large numbers of
+data files to be stored in a hierarchical manner, so there are not too many files in
+any one directory.
+.SH 1 "Modes of Operation"
+tdb operates in two modes, select mode and report mode (described below).
+Each mode requires a program file, but they are different.
+However, both select mode and report mode read the same data file format.
+
+The syntax of tdb programs is similar to "C" in some respects.
+.SH 2 "Select Mode"
+Select mode is used to \f2select\f1 (choose) or \f2reject\f1 (exclude)
+individual data records. Select mode programs
+consist of one or more \f2select\f1 or \f2reject\f1 EXECUTABLE STATEMENTs.
+
+Each of the select program statements is processed in order,
+and the first one to cause a rejection (or, equivalently, a non selection)
+causes that record to be rejected.  If none of the statements causes such a
+rejection, the record is selected.
+
+If a record is selected, it is written out (output) exactly
+as it was read (including being split into two lines, where appropriate).
+.SH 3 "Select Mode EXECUTABLE STATEMENTs"
+The syntax of the two select mode statements are:
+
+.nf
+select statement:	\f2select\f1(EXPR);
+
+reject statement:	\f2reject\f1(EXPR);
+.fi
+
+A sample select mode program:
+
+.nf
+\f2select\f1(department == 42);
+\f2reject\f1(course > 101);
+.fi
+.ne 8
+.SH 2 "Report Mode"
+Report mode is used to calculate and generate (hopefully) useful output.
+Report mode programs consist of exactly the following format:
+
+.nf
+1. zero or more \f2join\f1 statements
+2. exactly one \f2aggregate\f1 statement
+3. zero or more \f2function\f1 definitions
+4. one or more EXECUTABLE STATEMENTs
+.fi
+.SH 3 "Join Statements"
+tdb report programs may optionally have \f2join\f1 statement(s) as the first
+statement(s) in the program.
+
+.nf
+join statement: \f2join\f1(type NEW_FIELD: FIELD|STRING [,FIELD|STRING...]);
+.fi
+
+The \f2join\f1 statement creates a new FIELD (NEW_FIELD, above) by concatenating
+one or more existing FIELDs and/or STRINGs.  Joined FIELDs behave exactly
+as FIELDs defined in the FIELDs file, except they may not be used as FIELD
+arguments in other \f2join\f1 statements.
+.SH 3 "Aggregate Statements"
+After the optional \f2join\f1 statement(s),
+every tdb report program must contain exactly one \f2aggregate\f1 statement.
+tdb "aggregates" (sorts and collects into buckets)
+the data only for the FIELD(s) that are listed in the \f2aggregate\f1 statement.
+Aggregating on FIELD(s) that are not referenced in the report program does not
+produce different output, but it wastes computing resources (processing cycles
+and memory) - resulting in longer execution times.
+
+.nf
+\f2aggregate\f1 statement:	\f2aggregate\f1(FIELD [,FIELD...]);
+.fi
+
+Altering the order of the FIELDs in the \f2aggregate\f1 statement may also
+affect program efficiency.  Use the -v option in report mode to view tdb
+internal statistics.
+.SH 3 "Function Definitions"
+.nf
+\f2function\f1 definition:	\f2function\f1 function_name([parameter,...])
+			{
+			    [EXECUTABLE STATEMENTs]
+			}
+
+.fi
+Note: The \f2return\f1 statement (see below) must only be used within
+function definitions when they need to "return" (exit the function) and
+optionally supply a value (an expression) to the caller.
+.SH 3 "Report Mode EXECUTABLE STATEMENTs"
+.nf
+.ne 4
+compound statement:	{
+			    EXECUTABLE STATEMENT
+			    [EXECUTABLE STATEMENT(s)]
+			}
+.fi
+
+
+.ne 2
+.nf
+\f2foreach\f1 statement:	\f2foreach\f1 (REF_FIELD: [FIELD...])
+			    EXECUTABLE STATEMENT
+.fi
+
+The \f2foreach\f1 statement iterates through each valid value for REF_FIELD
+which is represented in the (aggregated) bucket(s) in the optional FIELD(s).
+If there are no optional FIELDs, \f2foreach\f1 loops once for each REF_FIELD
+value.  Unless the \f2sort\f1 command (see below) has been used,
+the values are in ascending sorted order of the REF_FIELD values.
+See also: \f2first\f1 and \f2last\f1 statements.
+
+.ne 2
+.nf
+\f2while\f1 statements:	\f2while\f1 (EXPR)
+			    EXECUTABLE STATEMENT
+
+
+.ne 3
+\f2do\f1-\f2while\f1 statement:	\f2do\f1
+			    EXECUTABLE STATEMENT
+		  	\f2while\f1 (EXPR);
+
+
+.ne 2
+\f2if\f1 statement:		\f2if\f1 (EXPR)
+			    EXECUTABLE STATEMENT
+
+
+.ne 4
+\f2if\f1-\f2else\f1 statement:	\f2if\f1 (EXPR)
+			    EXECUTABLE STATEMENT
+			\f2else\f1
+			    EXECUTABLE STATEMENT
+
+
+\f2sort\f1 statement:		\f2sort\f1(REF_FIELD: EXPR [,\f2reverse\f1]);
+
+
+\f2first\f1 statement:	\f2first\f1(REF_FIELD: INTEGER_EXPR);
+
+
+\f2last\f1 statement:		\f2last\f1(REF_FIELD: INTEGER_EXPR);
+.fi
+
+
+The \f2sort\f1 statement (re)arranges the processing order the REF_FIELD
+value(s) for any subsequent \f2foreach\f1 statement(s) for REF_FIELD.
+The EXPR argument of the \f2sort\f1 statement can (and usually does) reference
+REF_FIELD - even though it is not within a \f2foreach\f1(REF_FIELD:...)
+statement.
+
+The \f2first\f1 and \f2last\f1 statements cause subsequent \f2foreach\f1
+statement(s), for the specified FIELD (REF_FIELD), to only process the
+\f2first\f1 (or \f2last\f1) N vaules.
+
+
+.nf
+\f2printf\f1 statement:	\f2printf\f1(STRING_EXPR [,EXPR...]);
+
+
+\f2sprintf\f1 statement:	\f2sprintf\f1(VARIABLE, STRING_EXPR [,EXPR...]);
+
+
+assign statement:	VARIABLE ASSIGNMENT_OPERATOR EXPR;
+
+
+\f2system\f1 statement:	\f2system\f1(STRING_EXPR);
+
+
+\f2return\f1 statement:	\f2return\f1 [EXPR]; (See Function Definitions)
+
+
+expression statement:	EXPR;
+
+
+\f2trap\f1 statement:		\f2trap\f1(INTEGER_EXPR, function_name([EXPR,...]));
+.fi
+
+
+The \f2trap\f1 statement is used to invoke (call) a function whenever a
+the \f2linenumber\f1 variable (see below) hits a particular value.  This is
+typically used for page headers and footers, but can be used for any line
+number in the output.
+.SH 1 "FIELDs"
+FIELDs can be any valid identifier except a reserved word.
+.SH 1 "INTEGER CONSTANTs"
+    Integer constants are comprised of one or more digits (0-9).
+.SH 1 "FLOATING POINT CONSTANTs"
+Floating point constants are best illustrated by example:
+
+    23.45
+    -.1       -0.1
+    3.        3.0000
+    .7e5      0.7e5     .7E5       0.7E5    .7e+5   0.7e+5  .7E+5   0.7E+5
+    .33e-5    0.33e-5   .33E-5     0.33E-5
+    -98.76e5  -98.76E5  -98.76e+5  -98.76E+5
+.SH 1 "STRING CONSTANTs"
+String constants are any characters enclosed by double quotes (`"').
+There are several characters that can be included in a string constant by
+preceding them with a backslash character (`\\').  These are:
+
+    \\n		new line
+    \\t		tab
+    \\r		return
+    \\f		form feed
+    \\b		backspace
+    \\"		double quote
+    \\\\		backslash
+
+The following are example of string constants:
+
+    "Hello there"		(without new line at the end)
+    "Hello there\\n"		(with a new line at the end)
+    "\\tMy name is Fifo"		(with a tab at the beginning)
+.SH 1 "Operators"
+.SH 2 "ARITHMETIC_OPERATORs"
+    +		addition
+    -		subtraction
+    *		multiplication
+    /		division
+    %		modulus
+    ^		exponentiation
+.SH 2 "RELATIONAL_OPERATORs"
+    <		less than
+    >		greater than
+    <=		less than or equal to
+    >=		greater than or equal to
+    ==		equal to
+    !=		not equal to
+.SH 2 "LOGICAL_OPERATORs"
+    &&		logical and
+    ||		logical or
+    !		logical negation
+.SH 2 "Operator Precedence"
+This list of operator precedences is organized as follows: operators
+on the same line have equal precedence.  Operators at the top of the list
+have the highest precedence.
+
+    +     -	 !			(unary)
+    (TYPE)				(type casting)
+    *     /      %     ^
+    +     -				(binary)
+    <     <=     >     >=
+    ==    !=
+    &&
+    ||
+.SH 1 "ASSIGNMENT_OPERATORs"
+.nf
+    =	assignment
+    +=  add assignment
+    -=  subtract assignment
+    *=  multiplication assignment
+    /=  divide assignment
+    %=  mod assignment
+    ^=  exponentiation assignment
+
+For example:   a += b    means:    a = (a) + (b)
+.fi
+.SH 1 "VARIABLEs"
+.nf
+    IDENTIFIER				(scalar variable)
+    IDENTIFIER [EXPR [,EXPR...]]	(array variable)
+.fi
+
+Array indices may be integers, strings or floats. (However, using floating
+point numbers for indices is \f2not\f1 recommended; it should be avoided if possible
+for obvious reasons!)
+There is no limit to the dimension of array variables - that is - one can have
+arrayvar[10,integervar,42,"January",...66,stringvar,19].
+
+.SH 1 "EXPRs"
+.nf
+    INTEGER CONSTANT
+    FLOATING POINT CONSTANT
+    STRING CONSTANT
+    VARIABLE
+    FIELD
+    (EXPR)
+    EXPR RELATIONAL_OPERATOR EXPR
+    EXPR LOGICAL_OPERATOR EXPR
+    EXPR ARITHMETIC_OPERATOR EXPR
+    tdb intrinsic FUNCTION
+    function_name([EXPR,...])
+.fi
+.SH 1 "tdb Intrinsic Functions"
+.SH 2 "Select and Report Mode Intrinsic Functions"
+Some of the tdb intrinsic functions can be used in both select mode and
+report mode.  These functions are listed below.
+
+.nf
+    tdb Intrinsic Functions                       Expr type returned
+    _______________________________________       __________________
+
+    \f2sin\f1(FLOAT_EXPR)                                  FLOAT
+    \f2cos\f1(FLOAT_EXPR)                                  FLOAT
+    \f2tan\f1(FLOAT_EXPR)                                  FLOAT
+    \f2asin\f1(FLOAT_EXPR)                                 FLOAT
+    \f2acos\f1(FLOAT_EXPR)                                 FLOAT
+    \f2atan\f1(FLOAT_EXPR)                                 FLOAT
+    \f2log\f1(FLOAT_EXPR)                                  FLOAT
+    \f2log10\f1(FLOAT_EXPR)                                FLOAT
+    \f2exp\f1(FLOAT_EXPR)                                  FLOAT
+
+    \f2atoi\f1(STRING_EXPR)                                INTEGER
+    \f2atof\f1(STRING_EXPR)                                FLOAT
+
+    \f2patmatch\f1(STRING_EXPR, STRING_EXPR)               INTEGER
+    \f2strlen\f1(STRING_EXPR)                              INTEGER
+    \f2indexstr\f1(STRING_EXPR, STRING_EXPR)               INTEGER
+    \f2substr\f1(STRING_EXPR, INTEGER_EXPR, INTEGER_EXPR)  STRING
+    \f2lookup\f1(STRING_EXPR, STRING_EXPR, [INTEGER_EXPR]) STRING
+    \f2reportdate\f1()                                     INTEGER
+    \f2reporttime\f1()                                     INTEGER
+    \f2formatdate\f1(STRING_EXPR, INTEGER_EXPR)            STRING
+    \f2formattime\f1(STRING_EXPR, INTEGER_EXPR)            STRING
+.fi
+
+.SH 3 "The String Intrinsic Functions"
+The \f2patmatch\f1 function searches its second argument using the pattern
+specified by its first. regcomp and regexec are used to do this. (See their
+manual page for details.)  It returns a 1 if there is a match, otherwise 0.
+
+The \f2strlen\f1 function returns the length (in bytes) of its string argument.
+
+The \f2indexstr\f1 function searches its second argument for the string
+specified by its first argument.
+This is not a pattern match; it's a simple string
+find.  If the string is found, \f2indexstr\f1 returns the character position
+of the first occurrence.  If the string is not found, it returns 0.
+
+The \f2substr\f1 function returns the part of its first string argument
+specified by its second and third index integer arguments, the indexes.
+These index arguments must be between 1 and \f2strlen\f1(string), inclusive,
+and the second argument must be less than or equal to the third.
+
+The \f2lookup\f1 function is used to reference string patterns in a text
+file.
+The first argument is the string to search for - the pattern.
+The second argument is the name of a file to search.
+This function searches through the file for a line beginning with the pattern.
+If no such line exists, \f2lookup\f1 returns the pattern.
+If it does find one, \f2lookup\f1 returns the N'th argument on that line, where
+N is the optional integer third argument - the index.  Using an index of 1
+returns the pattern - a waste of system resources.  If no index (third)
+argument is used, it is assumed to be 2.
+
+
+.SH 3 "The Date and Time Intrinsic Functions"
+The \f2reportdate\f1 function returns the current date, as read from the
+system.  The value is an INTEGER, the format is yyyymmdd.
+
+The \f2reporttime\f1 returns the number of seconds that have elapsed since
+midnight, as read from the system.  This is an INTEGER value.
+
+The \f2formatdate\f1 and \f2formattime\f1 functions use the following format
+codes.  (Note, these are from strftime.)
+
+.in +5
+.nf
+%d    : two digit day of the month (dd)
+%m    : two digit month of the year (mm)
+%y    : two digit year (yy)
+%Y    : for digit year (yyyy)
+%H    : two digit hour (HH)
+%M    : two digit minute (MM)
+%S    : two digit second (SS)
+%a    : three character weekday abbreviation (e.g., "Mon")
+%A    : full weekday name (e.g., "Monday")
+%b, %h: three character month abbreviation (e.g., "Jan")
+%B    : full month name (e.g., "January")
+%j    : the day number of the year (e.g., 001-366)
+%U    : the week number of year (e.g., 01-52) Sun 1st day of week
+%W    : the week number of year (e.g., 01-52) Mon 1st day of week
+%%    : the literal '%' character
+.fi
+.in -5
+
+The \f2formatdate\f1 function is used to transform date values (like those
+returned by \f2reportdate\f1) into another text date string.
+It is called with two arguments,
+first the format string, and second, the (INTEGER) date to be formatted.
+Two sample format strings are: "%d/%m/%y" for dd/mm/yy, or "%m-%d" for mm-dd.
+
+The \f2formattime\f1 function is used to transform time values (like those
+returned by \f2reporttime\f1) into another text time string.
+For example, the format string "%H:%M:%S" produces HH:MM:SS.
+.SH 3 "The Need Intrinsic Function"
+The \f2need\f1 function is used when it is desirable
+to prevent a group of output lines from being split across a page break.  It
+takes the required number of lines as its argument.
+
+.SH 2 "Report Mode Intrinsic Functions"
+Some of the tdb intrinsic functions make no sense in select mode.
+The following functions may only be used in report mode.
+
+.nf
+    Report Mode Intrinsic Function                Expr type returned
+    _______________________________________       __________________
+
+    \f2count\f1([FIELD,...])                               INTEGER
+    \f2number\f1(REF_FIELD: [FIELD,...])                   INTEGER
+    \f2sum\f1(REF_FIELD: [FIELD,...])                      REF_FIELD's type
+    \f2sumsquared\f1(REF_FIELD: [FIELD,...])               REF_FIELD's type
+    \f2need\f1(INTEGER_EXPR)                               INTEGER
+.fi
+
+Note: only the FIELD(s) specified in the \f2aggregate\f1 statement can be
+referenced in a tdb report program.
+
+Much of the explanation below is centered on data records and data "buckets".
+For the sake of simplicity, assume each physical data input line corresponds
+to one (logical) record - that is, a row.
+That is, the fact that two data input lines can map to one (logical) record
+is not important here.
+
+Each time an input record is read, tdb selects the FIELD(s) (columns) of
+interest (the ones in the \f2aggregate\f1 statement, in report mode) and
+places them into appropriate data "buckets".  A bucket is simply a place where
+information about FIELD values is stored.  For example, a FIELD named fruit
+might have values of "apple", "banana", "cherry", and "quince".
+If the \f2aggregate\f1 statement contained this field, then a bucket would
+exist for each of these four values.
+
+.ne 12
+The examples below refer to the following FIELD and data files:
+
+.nf
+FIELD file          data file
+------------        --------------
+string fruit        apple     3.00
+float  price        banana    1.00
+                    banana    3.00
+                    cherry    3.00
+                    cherry    4.00
+                    cherry    5.00
+                    quince   10.00
+                    quince   10.00
+.fi
+.SH 3 "The Count Intrinsic Function"
+The \f2count\f1 function returns the number of record(s) that fell into the
+appropriate bucket.
+This function requires zero or more FIELD argument(s), and
+must be called from within a \f2foreach\f1 loop for every one
+of the FIELD argument(s).
+For example, if it is called with three arguments, there must
+be three nested foreach loops with the same FIELDs.
+The call `\f2count\f1()' (with no arguments) returns the total number of
+records.  Since it has no arguments, it may
+be called from anywhere in a program; that is, it need not be within any
+\f2foreach\f1 loop.
+
+For the example data above, \f2count\f1(fruit) would return the following
+values for apple: 1, banana: 2, cherry: 3, and quince: 2.
+Also, \f2count\f1() is 8.
+.SH 3 "The Number Intrinsic Function"
+The \f2number\f1 function calculates the \f2number\f1 of bucket(s) of a
+particular type for the reference FIELD (REF_FIELD).
+
+Both the REF_FIELD and the `:' are required.
+Like \f2count\f1, \f2number\f1 must be called from within
+a \f2foreach\f1 loop for all of the optional FIELDs.
+REF_FIELD must not also appear in the optional FIELD list.
+
+For the above data, \f2number\f1(fruit:) is 4, and \f2number\f1(price:) is 5.
+.SH 3 "The Sum Intrinsic Function"
+The \f2sum\f1 function calculates the (sum) total of all the individual
+values for the reference FIELD (REF_FIELD) for the specified bucket.
+REF_FIELD must be a numeric type (INTEGER or FLOAT).
+
+Both the REF_FIELD and the `:' are required.
+This function must also be called from within
+a \f2foreach\f1 loop for all of the optional FIELDs.
+REF_FIELD must not also appear in the optional FIELD list.
+
+For the example data above, sum(price:) would return 39.0.
+.SH 3 "The Sumsquared Intrinsic Function"
+The \f2sumsquared\f1 function calculates the (sum) total of the squares of all
+of the individual numeric data values for the reference FIELD (REF_FIELD) for the
+specified bucket.
+REF_FIELD must be a numeric type (INTEGER or FLOAT).
+
+Both the REF_FIELD and the `:' are required.
+This function must also be called from within
+a \f2foreach\f1 loop for all of the optional FIELDs.
+
+The primary purpose of this function is to facilitate statistical analysis,
+such as standard deviation.
+
+For the example data above, sumsquared(price:) would return 269.0.
+.SH 1 "tdb Reserved Variables"
+tdb maintains three INTEGER variables automatically in report mode.
+These are listed below (followed by their default initial values):
+
+.nf
+    - \f2pagelength\f1	(66)
+    - \f2pagenumber\f1	(1)
+    - \f2linenumber\f1	(0)
+.fi
+
+These variables are updated whenever tdb produces a line of output.
+It should never be necessary to assign \f2linenumber\f1.
+Note, the "line number" is relative to the top of the current page, and
+the numbers range from 0 to pagelength-1 inclusive.
+If it is desired for the first page of the report to start from some
+number other than 1, \f2pagenumber\f1 can be set accordingly.
+Similarly, if the length of the page is not 66 lines, \f2pagelength\f1
+can be set to some other legal value.
+
+Do not assign any of these variables to non integer or non positive values,
+otherwise, undesirable results will very likely occur.
+.SH 1 "Include Files"
+It is possible to include one file in another in the same manner as with
+the C Preprocessor (CPP) `#include' mechanism.
+To do this, one uses the following
+construction:
+
+#include "filename"
+
+Note that the `#' must be in the first column, and there must be no
+space between the `#' and `include'.
+.SH 1 "Warnings"
+.SH 2 "The Maximum Number of FIELDs in an Aggregate Statement"
+For now, the maximum number of FIELDs that can be used in any one
+\f2aggregate\f1 statement is the number of bits in the C language type
+long - 32 or 64 in most cases.  Note that this restriction does not apply to the
+number of FIELDs in the "database", nor does it apply to the number of FIELDs
+that can be referenced in select mode.
+.SH 2 "Trap Statements and Function Arguments"
+If the \f2trap\f1 statement is used within a user defined function, do NOT use
+any of that of that function's parameters in either of \f2trap\f1's arguments
+(either directly or indirectly).  This is due to the fact that the \f2trap\f1
+function can be called at any time, and the same arguments that were on the
+stack when the \f2trap\f1 was 'set' are unlikely to still be there when the
+\f2trap\f1 function is invoked.  Some examples may make this clear:
+.in +5
+.nf
+.ne 13
+function myfunc (integerparam, stringparam) {
+    trap(0, pageheader("hi"));             /* OK, no use of parameters */
+
+    globalvar = integerparam + 2;
+    trap(globalvar, pageheader("hi"));     /* OK, no use of parameters */
+
+    trap(integerparam, pageheader("hi"));  /* ERROR, direct use */
+
+    trap(0, pageheader(stringparam));      /* ERROR, direct use */
+
+                                           /* ERROR, indirect use */
+    trap(myotherfunc(10*integerparam/2), pageheader("hi"));
+}
+.fi
+.in -5
+.SH 1 "Copyright and License"
+Copyright (C)  1991-2015 James S. Crook
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".

@@ -1,0 +1,528 @@
+
+ACME Manufacturing Report                                       13/11/92 09:52
+
+             Percentage of Defects Missed By Visual Inspection Area
+             ======================================================
+                       Period from: 22/06/92 to: 26/06/92
+
+                                ---- REP ----   ---- VIS ----
+Fault Type                      # Flts Perfm    # Flts Perfm    % Missed
+------------                    ------ ------   ------ ------   --------
+
+Board type: AA (# boards)               0               1
+============================
+Missing                              0  *****        2   2.00       0.00
+
+Board type: AB (# boards)               1               0
+============================
+Missing                              4   4.00        0  *****     100.00
+
+Board type: AF (# boards)               3               1
+============================
+Bad comp                             3   1.00        1   1.00      50.00
+Missing                             10   3.33        2   2.00      62.50
+Tolerance                            4   1.33        1   1.00      57.14
+
+Board type: BC (# boards)               1               1
+============================
+Bad comp                             4   4.00        1   1.00      80.00
+Missing                              8   8.00        5   5.00      61.54
+Sold Open                            0   0.00        1   1.00       0.00
+Sold Short                           0   0.00        1   1.00       0.00
+Tolerance                            1   1.00        1   1.00      50.00
+
+Board type: QF (# boards)               3               5
+============================
+Bad comp                             3   1.00       12   2.40      29.41
+Rev/rotate                           0   0.00       15   3.00       0.00
+Sold Open                            1   0.33        0   0.00     100.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+                            Weekly Production Report
+                            ========================
+                       Period from: 22/06/92 to: 26/06/92
+
+------------- ---------- ---------- ---------- ---------- ---------- ----------
+              -- AA   -- -- AB   -- -- AF   -- -- BC   -- -- QF   -- -- Total -
+Description      # HH:MM    # HH:MM    # HH:MM    # HH:MM    # HH:MM    # HH:MM
+------------- ---------- ---------- ---------- ---------- ---------- ----------
+# boards done    1 00:03    1 00:06    3 00:31    1 00:33    5 00:45   11 01:58
+
+Bad comp         0 00:00    0 00:00    4 00:06    5 00:07   15 00:22   24 00:36
+Missing          2 00:03    4 00:06   12 00:18   13 00:19    0 00:00   31 00:46
+Rev/rotate       0 00:00    0 00:00    0 00:00    0 00:00   15 00:21   15 00:21
+Sold Open        0 00:00    0 00:00    0 00:00    1 00:01    1 00:01    2 00:03
+Sold Short       0 00:00    0 00:00    0 00:00    1 00:01    0 00:00    1 00:01
+Tolerance        0 00:00    0 00:00    5 00:07    2 00:03    0 00:00    7 00:10
+              ---------- ---------- ---------- ---------- ---------- ----------
+Totals           2 00:03    4 00:06   21 00:31   22 00:33   31 00:45   80 01:58
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+               Visual Inspection/Rework Summary (1) Weekly Report
+               ==================================================
+                       Period from: 22/06/92 to: 26/06/92
+
+Board Type                    Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+AA
+  Total time (MM:SS)    :                      3:00                    3:00
+  Total boards processed:                         1                       1
+  Average/board (MM:SS) :                      3:00                    3:00
+  Total faults processed:                         2                       2
+  Average/fault (MM:SS) :                      1:30                    1:30
+
+CPU, Rev 6
+  Total time (MM:SS)    :              3:00    1:30    1:30            6:00
+  Total boards processed:                 1       1       1               1
+  Average/board (MM:SS) :              3:00    1:30    1:30            6:00
+  Total faults processed:                 2       1       1               4
+  Average/fault (MM:SS) :              1:30    1:30    1:30            1:30
+
+Memory, Rev 3
+  Total time (MM:SS)    :              3:00   10:30                   13:30
+  Total boards processed:                 1       1                       1
+  Average/board (MM:SS) :              3:00   10:30                   13:30
+  Total faults processed:                 2       7                       9
+  Average/fault (MM:SS) :              1:30    1:30                    1:30
+
+747 Guidance, Rev 6
+  Total time (MM:SS)    :     33:00    0:09                    6:00   39:09
+  Total boards processed:         4       1                       1       5
+  Average/board (MM:SS) :      8:15    0:09                    6:00    7:49
+  Total faults processed:        22       1                       4      27
+  Average/fault (MM:SS) :      1:30    0:09                    1:30    1:27
+
+                           ================================================
+Overall time spent (HH:MM):    0:33    0:06    0:15    0:01    0:06    1:01
+Overall boards processed  :       4       3       3       1       1       8
+Overall avg/board (MM:SS) :    8:15    2:03    5:00    1:30    6:00    7:42
+Overall faults processed  :      22       5      10       1       4      42
+Overall avg/fault (MM:SS) :    1:30    1:13    1:30    1:30    1:30    1:28
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+               Visual Inspection/Rework Summary (2) Weekly Report
+               ==================================================
+                       Period from: 22/06/92 to: 26/06/92
+
+Operator                      Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+CROOK, JENNIFER A.
+  Total time (MM:SS)    :     33:00    0:09                    6:00   39:09
+  Total boards processed:         4       1                       1       5
+  Average/board (MM:SS) :      8:15    0:09                    6:00    7:49
+  Total faults processed:        22       1                       4      27
+  Average/fault (MM:SS) :      1:30    0:09                    1:30    1:27
+
+CROOK, JAMES S.
+  Total time (MM:SS)    :              1:30    4:30    1:30            7:30
+  Total boards processed:                 1       2       1               2
+  Average/board (MM:SS) :              1:30    2:15    1:30            3:45
+  Total faults processed:                 1       3       1               5
+  Average/fault (MM:SS) :              1:30    1:30    1:30            1:30
+
+ROLLADOORS, ROLAND
+  Total time (MM:SS)    :              4:30   10:30                   15:00
+  Total boards processed:                 2       2                       3
+  Average/board (MM:SS) :              2:15    5:15                    5:00
+  Total faults processed:                 3       7                      10
+  Average/fault (MM:SS) :              1:30    1:30                    1:30
+
+                           ================================================
+Overall time spent (HH:MM):    0:33    0:06    0:15    0:01    0:06    1:01
+Overall boards processed  :       4       3       3       1       1       8
+Overall avg/board (MM:SS) :    8:15    2:03    5:00    1:30    6:00    7:42
+Overall faults processed  :      22       5      10       1       4      42
+Overall avg/fault (MM:SS) :    1:30    1:13    1:30    1:30    1:30    1:28
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+               Visual Inspection/Rework Summary (3) Weekly Report
+               ==================================================
+                       Period from: 22/06/92 to: 26/06/92
+
+Fault                         Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+Bad comp
+  Total time (MM:SS)    :     18:00            1:30    1:30           21:00
+  Total faults processed:        12               1       1              14
+  Average/fault (MM:SS) :      1:30            1:30    1:30            1:30
+
+Missing
+  Total time (MM:SS)    :              3:00   10:30                   13:30
+  Total faults processed:                 2       7                       9
+  Average/fault (MM:SS) :              1:30    1:30                    1:30
+
+Rev/rotate
+  Total time (MM:SS)    :     15:00    0:09                    6:00   21:09
+  Total faults processed:        10       1                       4      15
+  Average/fault (MM:SS) :      1:30    0:09                    1:30    1:24
+
+Sold Open
+  Total time (MM:SS)    :                      1:30                    1:30
+  Total faults processed:                         1                       1
+  Average/fault (MM:SS) :                      1:30                    1:30
+
+Sold Short
+  Total time (MM:SS)    :                      1:30                    1:30
+  Total faults processed:                         1                       1
+  Average/fault (MM:SS) :                      1:30                    1:30
+
+Tolerance
+  Total time (MM:SS)    :              3:00                            3:00
+  Total faults processed:                 2                               2
+  Average/fault (MM:SS) :              1:30                            1:30
+
+                           ================================================
+Overall time spent (HH:MM):    0:33    0:06    0:15    0:01    0:06    1:01
+Overall faults processed  :      22       5      10       1       4      42
+Overall avg/fault (MM:SS) :    1:30    1:13    1:30    1:30    1:30    1:28
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+                     Repair Area Summary (1) Weekly Report
+                     =====================================
+                       Period from: 22/06/92 to: 26/06/92
+
+Board Type                    Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+AB
+  Total time (MM:SS)    :                      6:00                    6:00
+  Total boards processed:                         1                       1
+  Average/board (MM:SS) :                      6:00                    6:00
+  Total faults processed:                         4                       4
+  Average/fault (MM:SS) :                      1:30                    1:30
+
+CPU, Rev 6
+  Total time (MM:SS)    :      4:30    6:00   10:30    3:00    1:30   25:30
+  Total boards processed:         3       1       1       1       1       3
+  Average/board (MM:SS) :      1:30    6:00   10:30    3:00    1:30    8:30
+  Total faults processed:         3       4       7       2       1      17
+  Average/fault (MM:SS) :      1:30    1:30    1:30    1:30    1:30    1:30
+
+Memory, Rev 3
+  Total time (MM:SS)    :             12:00    7:30                   19:30
+  Total boards processed:                 1       1                       1
+  Average/board (MM:SS) :             12:00    7:30                   19:30
+  Total faults processed:                 8       5                      13
+  Average/fault (MM:SS) :              1:30    1:30                    1:30
+
+747 Guidance, Rev 6
+  Total time (MM:SS)    :      6:00                                    6:00
+  Total boards processed:         3                                       3
+  Average/board (MM:SS) :      2:00                                    2:00
+  Total faults processed:         4                                       4
+  Average/fault (MM:SS) :      1:30                                    1:30
+
+                           ================================================
+Overall time spent (HH:MM):    0:10    0:18    0:24    0:03    0:01    0:57
+Overall boards processed  :       6       2       3       1       1       8
+Overall avg/board (MM:SS) :    1:45    9:00    8:00    3:00    1:30    7:07
+Overall faults processed  :       7      12      16       2       1      38
+Overall avg/fault (MM:SS) :    1:30    1:30    1:30    1:30    1:30    1:30
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+                     Repair Area Summary (2) Weekly Report
+                     =====================================
+                       Period from: 22/06/92 to: 26/06/92
+
+Operator                      Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+CROOK, JENNIFER A.
+  Total time (MM:SS)    :      6:00                                    6:00
+  Total boards processed:         3                                       3
+  Average/board (MM:SS) :      2:00                                    2:00
+  Total faults processed:         4                                       4
+  Average/fault (MM:SS) :      1:30                                    1:30
+
+CROOK, JAMES S.
+  Total time (MM:SS)    :      4:30    4:30    4:30    3:00    1:30   18:00
+  Total boards processed:         3       2       2       1       1       4
+  Average/board (MM:SS) :      1:30    2:15    2:15    3:00    1:30    4:30
+  Total faults processed:         3       3       3       2       1      12
+  Average/fault (MM:SS) :      1:30    1:30    1:30    1:30    1:30    1:30
+
+ROLLADOORS, ROLAND
+  Total time (MM:SS)    :             13:30   19:30                   33:00
+  Total boards processed:                 2       3                       3
+  Average/board (MM:SS) :              6:45    6:30                   11:00
+  Total faults processed:                 9      13                      22
+  Average/fault (MM:SS) :              1:30    1:30                    1:30
+
+                           ================================================
+Overall time spent (HH:MM):    0:10    0:18    0:24    0:03    0:01    0:57
+Overall boards processed  :       6       2       3       1       1       8
+Overall avg/board (MM:SS) :    1:45    9:00    8:00    3:00    1:30    7:07
+Overall faults processed  :       7      12      16       2       1      38
+Overall avg/fault (MM:SS) :    1:30    1:30    1:30    1:30    1:30    1:30
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+
+
+ACME Manufacturing Report                                       21/12/92 14:41
+
+                     Repair Area Summary (3) Weekly Report
+                     =====================================
+                       Period from: 22/06/92 to: 26/06/92
+
+Fault                         Mon     Tue     Wed     Thu     Fri     Total
+------------------------     ------  ------  ------  ------  ------  ------ 
+Bad comp
+  Total time (MM:SS)    :      4:30    1:30    6:00    3:00           15:00
+  Total faults processed:         3       1       4       2              10
+  Average/fault (MM:SS) :      1:30    1:30    1:30    1:30            1:30
+
+Missing
+  Total time (MM:SS)    :      4:30   15:00   12:00            1:30   33:00
+  Total faults processed:         3      10       8               1      22
+  Average/fault (MM:SS) :      1:30    1:30    1:30            1:30    1:30
+
+Sold Open
+  Total time (MM:SS)    :      1:30                                    1:30
+  Total faults processed:         1                                       1
+  Average/fault (MM:SS) :      1:30                                    1:30
+
+Tolerance
+  Total time (MM:SS)    :              1:30    6:00                    7:30
+  Total faults processed:                 1       4                       5
+  Average/fault (MM:SS) :              1:30    1:30                    1:30
+
+                           ================================================
+Overall time spent (HH:MM):    0:10    0:18    0:24    0:03    0:01    0:57
+Overall faults processed  :       7      12      16       2       1      38
+Overall avg/fault (MM:SS) :    1:30    1:30    1:30    1:30    1:30    1:30
+                           ================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    - 1 -
+

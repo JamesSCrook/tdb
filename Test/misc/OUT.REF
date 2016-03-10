@@ -1,0 +1,508 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<A.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                      Number of Faults Found
+
+Date:       901111  901112  901113  901114  901115      Totals
+
+CROOK, JAMES S. : 4 boards
+  AF           3       1       2       1       1       8    19.0% (3 brd)
+  BC           0       3       4       0       0       7    16.7% (1 brd)
+         ------- ------- ------- ------- ------- -------   ------
+Subtot:        3       4       6       1       1      15    35.7%
+       ----------------------------------------------------------
+
+ROLLADOORS, ROLAND : 2 boards
+  BC           0       7       8       0       0      15    35.7% (1 brd)
+  AF           0       5       6       0       0      11    26.2% (1 brd)
+         ------- ------- ------- ------- ------- -------   ------
+Subtot:        0      12      14       0       0      26    61.9%
+       ----------------------------------------------------------
+
+CROOK, JENNIFER A. : 1 boards
+  QF           1       0       0       0       0       1     2.4% (1 brd)
+         ------- ------- ------- ------- ------- -------   ------
+Subtot:        1       0       0       0       0       1     2.4%
+       ----------------------------------------------------------
+
+=================================================================
+Totals:        4      16      20       1       1      42
+            9.5%   38.1%   47.6%    2.4%    2.4%
+SECSPERHOUR=3600
+PI=3.141590
+e=2.710000
+name=James S. Crook
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<B.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                      Number of Faults Found
+
+Date:       901111  901112  901113  901114  901115      Totals
+
+CPU, Rev 6 : 3 boards
+  JSC          3       1       2       1       1       8    19.0% (3 brd)
+  RR           0       5       6       0       0      11    26.2% (1 brd)
+         ------- ------- ------- ------- ------- -------   ------
+Subtot:        3       6       8       1       1      19    45.2%
+       ----------------------------------------------------------
+
+Memory, Rev 3 : 1 boards
+  JSC          0       3       4       0       0       7    16.7% (1 brd)
+  RR           0       7       8       0       0      15    35.7% (1 brd)
+         ------- ------- ------- ------- ------- -------   ------
+Subtot:        0      10      12       0       0      22    52.4%
+       ----------------------------------------------------------
+
+747 Guidance, Rev 6 : 1 boards
+  JAC          1       0       0       0       0       1     2.4% (1 brd)
+         ------- ------- ------- ------- ------- -------   ------
+Subtot:        1       0       0       0       0       1     2.4%
+       ----------------------------------------------------------
+
+=================================================================
+Totals:        4      16      20       1       1      42
+            9.5%   38.1%   47.6%    2.4%    2.4%
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<C.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+factorial( 1) =            1
+factorial( 2) =            2
+factorial( 3) =            6
+factorial( 4) =           24
+factorial( 5) =          120
+factorial( 6) =          720
+factorial( 7) =         5040
+factorial( 8) =        40320
+factorial( 9) =       362880
+factorial(10) =      3628800
+factorial(11) =     39916800
+factorial(12) =    479001600
+----------------------
+square(6)=36
+sum(8,9)=17
+square(sum(3,5))=64
+square(sum(-1,-2)) + square(sum(-4,-5))=90
+sum(square(sum(-1,-2)), square(sum(-4,-5)))=90
+square(3)=9
+sum(3,4)=7
+square(sum(3,4))=49
+sum(square(sum(3,4)), square(sum(6,8)))=245
+sumtenargs(1,2,3,4,5,6,7,8,9,10)=55
+----------------------
+Days of the week matching the pattern `e':
+    Sun : NO
+    Mon : NO
+    Tue : YES
+    Wed : YES
+    Thu : NO
+Days of the week matching the pattern `^T':
+    Sun : NO
+    Mon : NO
+    Tue : YES
+    Wed : NO
+    Thu : YES
+Days of the week matching the pattern `^[MW]':
+    Sun : NO
+    Mon : YES
+    Tue : NO
+    Wed : YES
+    Thu : NO
+Days of the week matching the pattern `[eu]$':
+    Sun : NO
+    Mon : NO
+    Tue : YES
+    Wed : NO
+    Thu : YES
+indexstr of 'n' in the week days (+strlen, substr)
+    indexstr(Sunday, n)=3  :  substr(Sunday, 3, 6)=nday
+    indexstr(Monday, n)=3  :  substr(Monday, 3, 6)=nday
+    indexstr(Tuesday, n)=0
+    indexstr(Wednesday, n)=4  :  substr(Wednesday, 4, 9)=nesday
+    indexstr(Thursday, n)=0
+indexstr of 'es' in the week days (+strlen, substr)
+    indexstr(Sunday, es)=0
+    indexstr(Monday, es)=0
+    indexstr(Tuesday, es)=3  :  substr(Tuesday, 3, 7)=esday
+    indexstr(Wednesday, es)=5  :  substr(Wednesday, 5, 9)=esday
+    indexstr(Thursday, es)=0
+indexstr of 'sd' in the week days (+strlen, substr)
+    indexstr(Sunday, sd)=0
+    indexstr(Monday, sd)=0
+    indexstr(Tuesday, sd)=4  :  substr(Tuesday, 4, 7)=sday
+    indexstr(Wednesday, sd)=6  :  substr(Wednesday, 6, 9)=sday
+    indexstr(Thursday, sd)=5  :  substr(Thursday, 5, 8)=sday
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<D.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		       11/11 12/11 13/11 14/11 15/11    Total  #DaysWkd
+
+CROOK, JENNIFER A. :      1     0     0     0     0       1       1
+CROOK, JAMES S.    :      3     4     6     1     1      15       5
+ROLLADOORS, ROLAND :      0    12    14     0     0      26       2
+
+Totals:		          4    16    20     1     1      42       5
+Oprs on date:	          2     2     2     1     1       3
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<E.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+AF 000001
+ 19901112 REP JSC C101 46-123-456 M m 90 m
+ 19901113 REP JSC C102 46-123-457 M m 90 m
+ 19901113 REP JSC C103 46-123-458 M m 90 m
+ 19901112 REP RR C103 46-123-458 M m 90 m
+ 19901112 REP RR C103 46-123-458 M m 90 m
+ 19901112 REP RR C103 46-123-458 M m 90 m
+ 19901112 REP RR C103 46-123-458 M m 90 m
+ 19901112 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+BC 000001
+ 19901112 REP JSC C101 46-123-456 M m 90 m
+ 19901112 REP JSC C101 46-123-456 M m 90 m
+ 19901112 REP JSC C101 46-123-456 M m 90 m
+ 19901113 REP JSC C101 46-123-456 M m 90 m
+ 19901113 REP JSC C101 46-123-456 M m 90 m
+ 19901113 REP JSC C101 46-123-456 M m 90 m
+ 19901113 REP JSC C101 46-123-456 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901112 REP RR C102 46-123-457 M m 90 m
+ 19901113 REP RR C102 46-123-457 M m 90 m
+ 19901113 REP RR C103 46-123-458 M m 90 m
+ 19901113 REP RR R101 51-123-101 M m 90 m
+ 19901113 REP RR R102 51-123-102 M m 90 m
+ 19901113 REP RR R102 51-123-102 M m 90 m
+ 19901113 REP RR R103 51-123-101 M m 90 m
+ 19901113 REP RR R103 51-123-101 M m 90 m
+ 19901113 REP RR R103 51-123-101 M m 90 m
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<F.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+			Faults on Each Side
+
+		        side1        side2        Total
+		     -----------  -----------  -----------
+AF : CPU, Rev 6
+		     17 ( 89.5%)    2 ( 10.5%)    19
+BC : Memory, Rev 3
+		     11 ( 50.0%)   11 ( 50.0%)    22
+QF : 747 Guidance, Rev 6
+		      1 (100.0%)    0 (  0.0%)     1
+
+
+			Number of Boards Processed
+
+Board Types		  AF    BC    QF    All types
+
+ROLLADOORS, ROLAND :      1     1     0       2
+CROOK, JENNIFER A. :      0     0     1       1
+CROOK, JAMES S.    :      3     1     0       4
+
+Total # Boards	          3     1     1       5
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<G.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+C101 :  46-123-456
+C102 :  46-123-457
+C103 :  46-123-458
+R101 :  51-123-101
+R102 :  51-123-102
+R103 :  51-123-101
+
+46-123-456:  C101
+46-123-457:  C102
+46-123-458:  C103
+51-123-101:  R101 R103
+51-123-102:  R102
+							Mon Nov 02, 1992
+							11:44:23
+
+
+Operator name	    11/11/90  12/11/90  13/11/90  14/11/90  15/11/90  Opr Tots
+------------------------------------------------------------------------------
+ROLLADOORS, ROLAND         0        12        14         0         0        26
+		           0      1080      1260         0         0      2340
+CROOK, JENNIFER A.         1         0         0         0         0         1
+		          90         0         0         0         0        90
+CROOK, JAMES S.            3         4         6         1         1        15
+		         270       360       540        90        90      1350
+------------------------------------------------------------------------------
+   Date Totals:	           4        16        20         1         1        42
+		         360      1440      1800        90        90      3780
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<H.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+--------------------------------------------------------------
+Number of failures: Sorted by component reference - total of 42 faults
+--------------------------------------------------------------
+C101 : **************************************************** 12 (28.6%)
+C102 : ******************************************* 10 (23.8%)
+C103 : ************************************************************ 14 (33.3%)
+R101 : ***** 1 (2.4%)
+R102 : ********* 2 (4.8%)
+R103 : ************* 3 (7.1%)
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+Number of failures: Sorted by number of failures - total of 42 faults
+--------------------------------------------------------------
+C103 : ************************************************************ 14 (33.3%)
+C101 : **************************************************** 12 (28.6%)
+C102 : ******************************************* 10 (23.8%)
+R103 : ************* 3 (7.1%)
+R102 : ********* 2 (4.8%)
+R101 : ***** 1 (2.4%)
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+Four most frequent failures - total of 42 faults
+--------------------------------------------------------------
+C103 : ************************************************************ 14 (33.3%)
+C101 : **************************************************** 12 (28.6%)
+C102 : ******************************************* 10 (23.8%)
+R103 : ************* 3 (7.1%)
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+Three least frequent failures - total of 42 faults
+--------------------------------------------------------------
+R103 : ************* 3 (7.1%)
+R102 : ********* 2 (4.8%)
+R101 : ***** 1 (2.4%)
+--------------------------------------------------------------
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<I.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+---- Test of op= ------------------------------------------
+1500
+%=43 ->   38, +=4 ->   42, -=1 ->   41, *=3 ->  123, /=9 ->   13, ^=3 -> 2197
+%=43 ->    4, +=4 ->    8, -=1 ->    7, *=3 ->   21, /=9 ->    2, ^=3 ->    8
+%=43 ->    8, +=4 ->   12, -=1 ->   11, *=3 ->   33, /=9 ->    3, ^=3 ->   27
+%=43 ->   27, +=4 ->   31, -=1 ->   30, *=3 ->   90, /=9 ->   10, ^=3 -> 1000
+%=43 ->   11, +=4 ->   15, -=1 ->   14, *=3 ->   42, /=9 ->    4, ^=3 ->   64
+%=43 ->   21, +=4 ->   25, -=1 ->   24, *=3 ->   72, /=9 ->    8, ^=3 ->  512
+%=43 ->   39, +=4 ->   43, -=1 ->   42, *=3 ->  126, /=9 ->   14, ^=3 -> 2744
+---- Test of array variables ------------------------------
+array[9]=18, array[9.500]=18.500, strtbl[8, "jc"]=<0x00800>
+array[7]=14, array[7.500]=14.500, strtbl[6, "jc"]=<0x00600>
+array[5]=10, array[5.500]=10.500, strtbl[4, "jc"]=<0x00400>
+array[3]= 6, array[3.500]= 6.500, strtbl[2, "jc"]=<0x00200>
+array[1]= 2, array[1.500]= 2.500, strtbl[0, "jc"]=<0x00000>
+strtbl["cj", 5]=<abc>, strtbl["cj", 5]=3.140
+array[idx]:array[ 0]= 0
+    array[array[idx]]: array[array[0]]= 0
+    array[array[array[idx]]/4]: array[array[array[0]]/4]= 0
+array[idx]:array[ 1]= 2
+    array[array[idx]]: array[array[1]]= 4
+    array[array[array[idx]]/4]: array[array[array[1]]/4]= 2
+array[idx]:array[ 2]= 4
+    array[array[idx]]: array[array[2]]= 8
+    array[array[array[idx]]/4]: array[array[array[2]]/4]= 4
+array[idx]:array[ 3]= 6
+    array[array[idx]]: array[array[3]]=12
+    array[array[array[idx]]/4]: array[array[array[3]]/4]= 6
+array[idx]:array[ 4]= 8
+    array[array[idx]]: array[array[4]]=16
+    array[array[array[idx]]/4]: array[array[array[4]]/4]= 8
+--------------------------------
+intparam=5, strparam=<jim>
+intparam=19, inttbl[9]=19
+strparam=<jim crook was here>, strvar=<jim crook>
+strparam=<my name is: jim crook>
+--------------------------------
+<JAC>, <JSC>, <RR>, 
+--------------------------------
+<CROOK, JENNIFER A.>
+<CROOK, JAMES S.>
+<ROLLADOORS, ROLAND>
+--------------------------------
+<CROOK, JAMES S.>
+<CROOK, JENNIFER A.>
+<ROLLADOORS, ROLAND>
+--------------------------------
+<C101>, <C102>, <C103>, <R101>, <R102>, <R103>, 
+--------------------------------
+Sorted by text description
+--------------------------------
+<C101>:<46-123-456>:<CAP 45 uF TANT>
+<C102>:<46-123-457>:<CAP 450 uF TANT>
+<C103>:<46-123-458>:<CAP 4500 uF TANT>
+<R102>:<51-123-102>:<RES 1k 5% 0.25W>
+<R103>:<51-123-103>:<RES 10k 5% 0.25W>
+<R101>:<51-123-101>:<RES 100R 5% 0.25W>
+--------------------------------
+Reverse sorted by part number
+--------------------------------
+<R103>:<51-123-103>:<RES 10k 5% 0.25W>
+<R102>:<51-123-102>:<RES 1k 5% 0.25W>
+<R101>:<51-123-101>:<RES 100R 5% 0.25W>
+<C103>:<46-123-458>:<CAP 4500 uF TANT>
+<C102>:<46-123-457>:<CAP 450 uF TANT>
+<C101>:<46-123-456>:<CAP 45 uF TANT>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<J.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+H
+HHHHHHHHHHHHH -1- HHHHHHHHHHHHHH
+H
+    c= 1      (ndatalines=2)
+    c= 2      (ndatalines=1)
+    ------------------------
+    c= 3      (ndatalines=4)
+    c= 4      (ndatalines=3)
+    c= 5      (ndatalines=2)
+    c= 6      (ndatalines=1)
+    ------------------------
+
+
+F
+FFFFFFFFFFFFF -1- FFFFFFFFFFFFFF
+F
+H
+HHHHHHHHHHHHH -2- HHHHHHHHHHHHHH
+H
+    c= 7      (ndatalines=3)
+    c= 8      (ndatalines=2)
+    c= 9      (ndatalines=1)
+    ------------------------
+    c=10      (ndatalines=1)
+    ------------------------
+    c=11      (ndatalines=2)
+    c=12      (ndatalines=1)
+    ------------------------
+
+F
+FFFFFFFFFFFFF -2- FFFFFFFFFFFFFF
+F
+H
+HHHHHHHHHHHHH -3- HHHHHHHHHHHHHH
+H
+    c=13      (ndatalines=4)
+    c=14      (ndatalines=3)
+    c=15      (ndatalines=2)
+    c=16      (ndatalines=1)
+    ------------------------
+    c=17      (ndatalines=3)
+    c=18      (ndatalines=2)
+    c=19      (ndatalines=1)
+    ------------------------
+
+F
+FFFFFFFFFFFFF -3- FFFFFFFFFFFFFF
+F
+H
+HHHHHHHHHHHHH -4- HHHHHHHHHHHHHH
+H
+    c=20      (ndatalines=1)
+    ------------------------
+    c=21      (ndatalines=2)
+    c=22      (ndatalines=1)
+    ------------------------
+    c=23      (ndatalines=4)
+    c=24      (ndatalines=3)
+    c=25      (ndatalines=2)
+    c=26      (ndatalines=1)
+    ------------------------
+F
+FFFFFFFFFFFFF -4- FFFFFFFFFFFFFF
+F
+H
+HHHHHHHHHHHHH -5- HHHHHHHHHHHHHH
+H
+    c=27      (ndatalines=3)
+    c=28      (ndatalines=2)
+    c=29      (ndatalines=1)
+    ------------------------
+    c=30      (ndatalines=1)
+    ------------------------
+    c=31      (ndatalines=2)
+    c=32      (ndatalines=1)
+    ------------------------
+
+F
+FFFFFFFFFFFFF -5- FFFFFFFFFFFFFF
+F
+H
+HHHHHHHHHHHHH -6- HHHHHHHHHHHHHH
+H
+    c=33      (ndatalines=4)
+    c=34      (ndatalines=3)
+    c=35      (ndatalines=2)
+    c=36      (ndatalines=1)
+    ------------------------
+    c=37      (ndatalines=3)
+    c=38      (ndatalines=2)
+    c=39      (ndatalines=1)
+    ------------------------
+
+F
+FFFFFFFFFFFFF -6- FFFFFFFFFFFFFF
+F
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<K.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+H
+HHHHHHHHHHHHH -1- HHHHHHHHHHHHHH
+H
+    c= 1      (ndatalines=2)
+    c= 2      (ndatalines=1)
+    ------------------------
+    c= 3      (ndatalines=4)
+    c= 4      (ndatalines=3)
+    c= 5      (ndatalines=2)
+    c= 6      (ndatalines=1)
+    ------------------------
+    c= 7      (ndatalines=3)
+    c= 8      (ndatalines=2)
+    c= 9      (ndatalines=1)
+    ------------------------
+H
+HHHHHHHHHHHHH -2- HHHHHHHHHHHHHH
+H
+    c=10      (ndatalines=1)
+    ------------------------
+    c=11      (ndatalines=2)
+    c=12      (ndatalines=1)
+    ------------------------
+    c=13      (ndatalines=4)
+    c=14      (ndatalines=3)
+    c=15      (ndatalines=2)
+    c=16      (ndatalines=1)
+    ------------------------
+
+
+H
+HHHHHHHHHHHHH -2- HHHHHHHHHHHHHH
+H
+    c=17      (ndatalines=3)
+    c=18      (ndatalines=2)
+    c=19      (ndatalines=1)
+    ------------------------
+    c=20      (ndatalines=1)
+    ------------------------
+    c=21      (ndatalines=2)
+    c=22      (ndatalines=1)
+    ------------------------
+
+
+
+H
+HHHHHHHHHHHHH -2- HHHHHHHHHHHHHH
+H
+    c=23      (ndatalines=4)
+    c=24      (ndatalines=3)
+    c=25      (ndatalines=2)
+    c=26      (ndatalines=1)
+    ------------------------
+    c=27      (ndatalines=3)
+    c=28      (ndatalines=2)
+    c=29      (ndatalines=1)
+    ------------------------
+    c=30      (ndatalines=1)
+    ------------------------
+
+H
+HHHHHHHHHHHHH -2- HHHHHHHHHHHHHH
+H
+    c=31      (ndatalines=2)
+    c=32      (ndatalines=1)
+    ------------------------
+    c=33      (ndatalines=4)
+    c=34      (ndatalines=3)
+    c=35      (ndatalines=2)
+    c=36      (ndatalines=1)
+    ------------------------
+    c=37      (ndatalines=3)
+    c=38      (ndatalines=2)
+    c=39      (ndatalines=1)
+    ------------------------

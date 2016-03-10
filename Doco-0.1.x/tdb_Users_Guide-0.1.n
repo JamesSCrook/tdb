@@ -1,0 +1,792 @@
+tdb - A Text Database Utility                                        Version 0.1
+
+
+                         _t_d_b _- _A _T_e_x_t _D_a_t_a_b_a_s_e _U_t_i_l_i_t_y
+
+
+
+_1_._ _O_v_e_r_v_i_e_w
+
+tdb  is a report writing utility base on reading text "database" files.  It is a
+non relational system.
+
+tdb requires a metadata description of the layout of the text files.  This  file
+is called the FIELDs file; it serves as the "data dictionary".
+
+A program file is also required, depending upon which of tdb's two modes (select
+or report) is used.
+
+Note: square brackets `[]' are used  to  indicate  something  is  optional,  and
+ellipses  (...) are used to indicate that the item(s) preceding the ellipsis may
+be (optionally) repeated multiple times.
+
+
+_2_._ _F_I_E_L_D_ _F_i_l_e_s
+
+A FIELD file serves the most basic purpose of the data dictionary in an RDBMS  -
+that  is,  it  describes the data.  There are three FIELD types: int, float, and
+string. FIELDs are declared on one line using the type and the  name,  separated
+by  "white  space"  (one  or more space and/or tab characters).  FIELD files may
+contain comments (anything after a '#' character).  Here  is  an  example  of  a
+FIELD file with four FIELDs:
+
+_s_t_r_i_n_g   name           # student name
+_i_n_t      department     # department number
+_i_n_t      course         # course number
+_f_l_o_a_t    score          # score for one exam, out of 100
+# +-+ yet more inane commentary +-+
+
+
+_3_._ _D_a_t_a_ _F_i_l_e_s_ _a_n_d_ _D_a_t_a_ _D_i_r_e_c_t_o_r_i_e_s
+
+
+
+_3_._1_._ _D_a_t_a_ _F_i_l_e_s
+
+Data  files  consist  of  text  records.   Each record consist of FIELDs of text
+separated by "white space" (by default), or a delimiter character  specified  on
+the command line (-d '<char>').
+
+String  FIELDs  may  contain delimiter character(s) by surrounding them with the
+quote character (default double quote): "Tux T. Penguin"
+
+A different quote character may be specified on the command line, e.g., "-q '|'"
+
+
+_3_._1_._1_._ _W_h_i_t_e_ _S_p_a_c_e_ _D_e_l_i_m_i_t_e_d_ _D_a_t_a_ _F_i_l_e_s
+
+This is the default delimiting style.  There are  two  valid  formats  for  data
+records:  all the FIELDs are on one line, or FIELDs split across two lines.  The
+first FIELD of a data record must start at  the  beginning  of  a  line.   Lines
+starting  with  "white  space"  are  a  continuation  of a previous line.  As an
+example of the simplest case, here is valid a  data  record  for  the  preceding
+FIELD file:
+
+
+1991-2015                              -1-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+"Tux T. Penguin" 42 101 88.5
+
+Data  records beginning with "white space" are considered to be continuations of
+the most recent previous record that started at the beginning of the line.   For
+example, all of the following sample data files represent exactly the same data.
+
+Example 1:
+"Tux T. Penguin" 42 101 88.5
+"Tux T. Penguin" 42 104 92.4
+"Tux T. Penguin" 24  52 64.2
+
+Example 2:
+"Tux T. Penguin"
+        42 101 88.5
+        42 104 92.4
+        24  52 64.2
+
+Example 3:
+"Tux T. Penguin" 42
+    101 88.5
+    104 92.4
+"Tux T. Penguin" 24
+     52 64.2
+
+"White  space" delimited data files may also contain comments.  All text after a
+comment character (`#') is ignored.  The comment character may  be  included  as
+data by surrounding it with quote characters (by default, double quote: "#").
+
+
+_3_._1_._2_._ _C_o_m_m_a_n_d_ _L_i_n_e_ _S_p_e_c_i_f_i_e_d_ _S_i_n_g_l_e_ _C_h_a_r_a_c_t_e_r_ _D_e_l_i_m_i_t_e_d_ _D_a_t_a_ _F_i_l_e_s
+
+The  FIELDs  are delimited by a single character, specified on the command line.
+For example, a CSV (Comma Separated Value) file could be used by invoking '-d ,'
+on the command line.
+
+Comments are not allowed in single character delimited data files.
+
+Quoting text is the same for both formats of data file.
+
+
+_3_._2_._ _D_a_t_a_ _D_i_r_e_c_t_o_r_i_e_s
+
+Whenever  a  tdb  command  line data argument is a directory, tdb traverses that
+directory tree, opening all files in turn.  Each file is  processed  in  exactly
+the  same manner as if it were specified individually (see above).  This permits
+large numbers of data files to be stored in a hierarchical manner, so there  are
+not too many files in any one directory.
+
+
+_4_._ _M_o_d_e_s_ _o_f_ _O_p_e_r_a_t_i_o_n
+
+tdb  operates in two modes, select mode and report mode (described below).  Each
+mode requires a program file, but they are different.  However, both select mode
+and report mode read the same data file format.
+
+The syntax of tdb programs is similar to "C" in some respects.
+
+
+_4_._1_._ _S_e_l_e_c_t_ _M_o_d_e
+
+Select  mode  is  used  to  _s_e_l_e_c_t  (choose) or _r_e_j_e_c_t (exclude) individual data
+records. Select mode programs consist of one or more _s_e_l_e_c_t or _r_e_j_e_c_t EXECUTABLE
+
+1991-2015                              -2-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+STATEMENTs.
+
+Each  of  the select program statements is processed in order, and the first one
+to cause a rejection (or, equivalently, a non selection) causes that  record  to
+be  rejected.   If none of the statements causes such a rejection, the record is
+selected.
+
+If a record is selected, it is written out  (output)  exactly  as  it  was  read
+(including being split into two lines, where appropriate).
+
+
+_4_._1_._1_._ _S_e_l_e_c_t_ _M_o_d_e_ _E_X_E_C_U_T_A_B_L_E_ _S_T_A_T_E_M_E_N_T_s
+
+The syntax of the two select mode statements are:
+
+select statement:       _s_e_l_e_c_t(EXPR);
+
+reject statement:       _r_e_j_e_c_t(EXPR);
+
+A sample select mode program:
+
+_s_e_l_e_c_t(department == 42);
+_r_e_j_e_c_t(course > 101);
+
+
+_4_._2_._ _R_e_p_o_r_t_ _M_o_d_e
+
+Report mode is used to calculate and generate (hopefully) useful output.  Report
+mode programs consist of exactly the following format:
+
+1. zero or more _j_o_i_n statements
+2. exactly one _a_g_g_r_e_g_a_t_e statement
+3. zero or more _f_u_n_c_t_i_o_n definitions
+4. one or more EXECUTABLE STATEMENTs
+
+
+_4_._2_._1_._ _J_o_i_n_ _S_t_a_t_e_m_e_n_t_s
+
+tdb  report  programs  may  optionally  have  _j_o_i_n  statement(s)  as  the  first
+statement(s) in the program.
+
+join statement: _j_o_i_n(type NEW_FIELD: FIELD|STRING [,FIELD|STRING...]);
+
+The  _j_o_i_n  statement creates a new FIELD (NEW_FIELD, above) by concatenating one
+or more existing FIELDs and/or STRINGs.  Joined FIELDs behave exactly as  FIELDs
+defined  in  the  FIELDs file, except they may not be used as FIELD arguments in
+other _j_o_i_n statements.
+
+
+_4_._2_._2_._ _A_g_g_r_e_g_a_t_e_ _S_t_a_t_e_m_e_n_t_s
+
+After the optional _j_o_i_n statement(s), every  tdb  report  program  must  contain
+exactly  one  _a_g_g_r_e_g_a_t_e  statement.   tdb  "aggregates" (sorts and collects into
+buckets) the data only for  the  FIELD(s)  that  are  listed  in  the  _a_g_g_r_e_g_a_t_e
+statement.   Aggregating  on  FIELD(s)  that  are  not  referenced in the report
+program does not produce different output, but  it  wastes  computing  resources
+(processing cycles and memory) - resulting in longer execution times.
+
+_a_g_g_r_e_g_a_t_e statement:    _a_g_g_r_e_g_a_t_e(FIELD [,FIELD...]);
+
+Altering  the  order  of  the  FIELDs in the _a_g_g_r_e_g_a_t_e statement may also affect
+program efficiency.  Use the -v option in  report  mode  to  view  tdb  internal
+
+1991-2015                              -3-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+statistics.
+
+
+_4_._2_._3_._ _F_u_n_c_t_i_o_n_ _D_e_f_i_n_i_t_i_o_n_s
+
+_f_u_n_c_t_i_o_n definition:    _f_u_n_c_t_i_o_n function_name([parameter,...])
+                        {
+                            [EXECUTABLE STATEMENTs]
+                        }
+
+Note:  The  _r_e_t_u_r_n  statement  (see  below)  must  only  be used within function
+definitions when they need to "return" (exit the function) and optionally supply
+a value (an expression) to the caller.
+
+
+_4_._2_._4_._ _R_e_p_o_r_t_ _M_o_d_e_ _E_X_E_C_U_T_A_B_L_E_ _S_T_A_T_E_M_E_N_T_s
+
+compound statement:     {
+                            EXECUTABLE STATEMENT
+                            [EXECUTABLE STATEMENT(s)]
+                        }
+
+
+_f_o_r_e_a_c_h statement:      _f_o_r_e_a_c_h (REF_FIELD: [FIELD...])
+                            EXECUTABLE STATEMENT
+
+The  _f_o_r_e_a_c_h  statement iterates through each valid value for REF_FIELD which is
+represented in the (aggregated) bucket(s) in the optional  FIELD(s).   If  there
+are no optional FIELDs, _f_o_r_e_a_c_h loops once for each REF_FIELD value.  Unless the
+_s_o_r_t command (see below) has been used, the values are in ascending sorted order
+of the REF_FIELD values.  See also: _f_i_r_s_t and _l_a_s_t statements.
+
+_w_h_i_l_e statements:       _w_h_i_l_e (EXPR)
+                            EXECUTABLE STATEMENT
+
+
+_d_o-_w_h_i_l_e statement:     _d_o
+                            EXECUTABLE STATEMENT
+                        _w_h_i_l_e (EXPR);
+
+
+_i_f statement:           _i_f (EXPR)
+                            EXECUTABLE STATEMENT
+
+
+_i_f-_e_l_s_e statement:      _i_f (EXPR)
+                            EXECUTABLE STATEMENT
+                        _e_l_s_e
+                            EXECUTABLE STATEMENT
+
+
+_s_o_r_t statement:         _s_o_r_t(REF_FIELD: EXPR [,_r_e_v_e_r_s_e]);
+
+
+_f_i_r_s_t statement:        _f_i_r_s_t(REF_FIELD: INTEGER_EXPR);
+
+
+_l_a_s_t statement:         _l_a_s_t(REF_FIELD: INTEGER_EXPR);
+
+
+The  _s_o_r_t statement (re)arranges the processing order the REF_FIELD value(s) for
+any subsequent _f_o_r_e_a_c_h statement(s) for REF_FIELD.  The  EXPR  argument  of  the
+
+1991-2015                              -4-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+_s_o_r_t  statement  can  (and usually does) reference REF_FIELD - even though it is
+not within a _f_o_r_e_a_c_h(REF_FIELD:...)  statement.
+
+The _f_i_r_s_t and _l_a_s_t statements cause subsequent  _f_o_r_e_a_c_h  statement(s),  for  the
+specified FIELD (REF_FIELD), to only process the _f_i_r_s_t (or _l_a_s_t) N vaules.
+
+
+_p_r_i_n_t_f statement:       _p_r_i_n_t_f(STRING_EXPR [,EXPR...]);
+
+
+_s_p_r_i_n_t_f statement:      _s_p_r_i_n_t_f(VARIABLE, STRING_EXPR [,EXPR...]);
+
+
+assign statement:       VARIABLE ASSIGNMENT_OPERATOR EXPR;
+
+
+_s_y_s_t_e_m statement:       _s_y_s_t_e_m(STRING_EXPR);
+
+
+_r_e_t_u_r_n statement:       _r_e_t_u_r_n [EXPR]; (See Function Definitions)
+
+
+expression statement:   EXPR;
+
+
+_t_r_a_p statement:         _t_r_a_p(INTEGER_EXPR, function_name([EXPR,...]));
+
+
+The _t_r_a_p statement is used to invoke (call) a function whenever a the _l_i_n_e_n_u_m_b_e_r
+variable (see below) hits a particular value.  This is typically used  for  page
+headers and footers, but can be used for any line number in the output.
+
+
+_5_._ _F_I_E_L_D_s
+
+FIELDs can be any valid identifier except a reserved word.
+
+
+_6_._ _I_N_T_E_G_E_R_ _C_O_N_S_T_A_N_T_s
+
+    Integer constants are comprised of one or more digits (0-9).
+
+
+_7_._ _F_L_O_A_T_I_N_G_ _P_O_I_N_T_ _C_O_N_S_T_A_N_T_s
+
+Floating point constants are best illustrated by example:
+
+    23.45
+    -.1       -0.1
+    3.        3.0000
+    .7e5      0.7e5     .7E5       0.7E5    .7e+5   0.7e+5  .7E+5   0.7E+5
+    .33e-5    0.33e-5   .33E-5     0.33E-5
+    -98.76e5  -98.76E5  -98.76e+5  -98.76E+5
+
+
+_8_._ _S_T_R_I_N_G_ _C_O_N_S_T_A_N_T_s
+
+String  constants are any characters enclosed by double quotes (`"').  There are
+several characters that can be included in a string constant by  preceding  them
+with a backslash character (`\').  These are:
+
+    \n          new line
+
+1991-2015                              -5-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+    \t          tab
+    \r          return
+    \f          form feed
+    \b          backspace
+    \"          double quote
+    \\          backslash
+
+The following are example of string constants:
+
+    "Hello there"               (without new line at the end)
+    "Hello there\n"             (with a new line at the end)
+    "\tMy name is Fifo"         (with a tab at the beginning)
+
+
+_9_._ _O_p_e_r_a_t_o_r_s
+
+
+
+_9_._1_._ _A_R_I_T_H_M_E_T_I_C___O_P_E_R_A_T_O_R_s
+
+    +           addition
+    -           subtraction
+    *           multiplication
+    /           division
+    %           modulus
+    ^           exponentiation
+
+
+_9_._2_._ _R_E_L_A_T_I_O_N_A_L___O_P_E_R_A_T_O_R_s
+
+    <           less than
+    >           greater than
+    <=          less than or equal to
+    >=          greater than or equal to
+    ==          equal to
+    !=          not equal to
+
+
+_9_._3_._ _L_O_G_I_C_A_L___O_P_E_R_A_T_O_R_s
+
+    &&          logical and
+    ||          logical or
+    !           logical negation
+
+
+_9_._4_._ _O_p_e_r_a_t_o_r_ _P_r_e_c_e_d_e_n_c_e
+
+This list of operator precedences is organized as follows: operators on the same
+line have equal precedence.  Operators at the top of the list have  the  highest
+precedence.
+
+    +     -      !                      (unary)
+    (TYPE)                              (type casting)
+    *     /      %     ^
+    +     -                             (binary)
+    <     <=     >     >=
+    ==    !=
+    &&
+    ||
+
+
+
+
+1991-2015                              -6-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+_1_0_._ _A_S_S_I_G_N_M_E_N_T___O_P_E_R_A_T_O_R_s
+
+    =   assignment
+    +=  add assignment
+    -=  subtract assignment
+    *=  multiplication assignment
+    /=  divide assignment
+    %=  mod assignment
+    ^=  exponentiation assignment
+
+For example:   a += b    means:    a = (a) + (b)
+
+
+_1_1_._ _V_A_R_I_A_B_L_E_s
+
+    IDENTIFIER                          (scalar variable)
+    IDENTIFIER [EXPR [,EXPR...]]        (array variable)
+
+Array indices may be integers, strings or floats. (However, using floating point
+numbers for indices is _n_o_t recommended; it should be  avoided  if  possible  for
+obvious  reasons!)  There is no limit to the dimension of array variables - that
+is - one can have arrayvar[10,integervar,42,"January",...66,stringvar,19].
+
+
+
+_1_2_._ _E_X_P_R_s
+
+    INTEGER CONSTANT
+    FLOATING POINT CONSTANT
+    STRING CONSTANT
+    VARIABLE
+    FIELD
+    (EXPR)
+    EXPR RELATIONAL_OPERATOR EXPR
+    EXPR LOGICAL_OPERATOR EXPR
+    EXPR ARITHMETIC_OPERATOR EXPR
+    tdb intrinsic FUNCTION
+    function_name([EXPR,...])
+
+
+_1_3_._ _t_d_b_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n_s
+
+
+
+_1_3_._1_._ _S_e_l_e_c_t_ _a_n_d_ _R_e_p_o_r_t_ _M_o_d_e_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n_s
+
+Some of the tdb intrinsic functions can be used in both select mode  and  report
+mode.  These functions are listed below.
+
+    tdb Intrinsic Functions                       Expr type returned
+    _______________________________________       __________________
+
+    _s_i_n(FLOAT_EXPR)                                  FLOAT
+    _c_o_s(FLOAT_EXPR)                                  FLOAT
+    _t_a_n(FLOAT_EXPR)                                  FLOAT
+    _a_s_i_n(FLOAT_EXPR)                                 FLOAT
+    _a_c_o_s(FLOAT_EXPR)                                 FLOAT
+    _a_t_a_n(FLOAT_EXPR)                                 FLOAT
+    _l_o_g(FLOAT_EXPR)                                  FLOAT
+    _l_o_g_1_0(FLOAT_EXPR)                                FLOAT
+    _e_x_p(FLOAT_EXPR)                                  FLOAT
+
+
+1991-2015                              -7-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+    _a_t_o_i(STRING_EXPR)                                INTEGER
+    _a_t_o_f(STRING_EXPR)                                FLOAT
+
+    _p_a_t_m_a_t_c_h(STRING_EXPR, STRING_EXPR)               INTEGER
+    _s_t_r_l_e_n(STRING_EXPR)                              INTEGER
+    _i_n_d_e_x_s_t_r(STRING_EXPR, STRING_EXPR)               INTEGER
+    _s_u_b_s_t_r(STRING_EXPR, INTEGER_EXPR, INTEGER_EXPR)  STRING
+    _l_o_o_k_u_p(STRING_EXPR, STRING_EXPR, [INTEGER_EXPR]) STRING
+    _r_e_p_o_r_t_d_a_t_e()                                     INTEGER
+    _r_e_p_o_r_t_t_i_m_e()                                     INTEGER
+    _f_o_r_m_a_t_d_a_t_e(STRING_EXPR, INTEGER_EXPR)            STRING
+    _f_o_r_m_a_t_t_i_m_e(STRING_EXPR, INTEGER_EXPR)            STRING
+
+
+
+_1_3_._1_._1_._ _T_h_e_ _S_t_r_i_n_g_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n_s
+
+The  _p_a_t_m_a_t_c_h  function searches its second argument using the pattern specified
+by its first. regcomp and regexec are used to do this. (See  their  manual  page
+for details.)  It returns a 1 if there is a match, otherwise 0.
+
+The _s_t_r_l_e_n function returns the length (in bytes) of its string argument.
+
+The  _i_n_d_e_x_s_t_r  function searches its second argument for the string specified by
+its first argument.  This is not a pattern match; it's a simple string find.  If
+the  string  is  found,  _i_n_d_e_x_s_t_r  returns  the  character position of the first
+occurrence.  If the string is not found, it returns 0.
+
+The _s_u_b_s_t_r function returns the part of its first string argument  specified  by
+its  second  and  third  index  integer  arguments,  the  indexes.   These index
+arguments must be between  1  and  _s_t_r_l_e_n(string),  inclusive,  and  the  second
+argument must be less than or equal to the third.
+
+The  _l_o_o_k_u_p  function  is used to reference string patterns in a text file.  The
+first argument is the string to search for - the pattern.  The  second  argument
+is  the name of a file to search.  This function searches through the file for a
+line beginning with the pattern.  If no such line  exists,  _l_o_o_k_u_p  returns  the
+pattern.   If  it  does find one, _l_o_o_k_u_p returns the N'th argument on that line,
+where N is the optional integer third argument - the index.  Using an index of 1
+returns the pattern - a waste of system resources.  If no index (third) argument
+is used, it is assumed to be 2.
+
+
+
+
+_1_3_._1_._2_._ _T_h_e_ _D_a_t_e_ _a_n_d_ _T_i_m_e_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n_s
+
+The _r_e_p_o_r_t_d_a_t_e function returns the current date, as read from the system.   The
+value is an INTEGER, the format is yyyymmdd.
+
+The  _r_e_p_o_r_t_t_i_m_e  returns the number of seconds that have elapsed since midnight,
+as read from the system.  This is an INTEGER value.
+
+The _f_o_r_m_a_t_d_a_t_e and _f_o_r_m_a_t_t_i_m_e functions use the following format codes.   (Note,
+these are from strftime.)
+
+     %d    : two digit day of the month (dd)
+     %m    : two digit month of the year (mm)
+     %y    : two digit year (yy)
+     %Y    : for digit year (yyyy)
+     %H    : two digit hour (HH)
+     %M    : two digit minute (MM)
+
+1991-2015                              -8-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+     %S    : two digit second (SS)
+     %a    : three character weekday abbreviation (e.g., "Mon")
+     %A    : full weekday name (e.g., "Monday")
+     %b, %h: three character month abbreviation (e.g., "Jan")
+     %B    : full month name (e.g., "January")
+     %j    : the day number of the year (e.g., 001-366)
+     %U    : the week number of year (e.g., 01-52) Sun 1st day of week
+     %W    : the week number of year (e.g., 01-52) Mon 1st day of week
+     %%    : the literal '%' character
+
+The _f_o_r_m_a_t_d_a_t_e function is used to transform date values (like those returned by
+_r_e_p_o_r_t_d_a_t_e) into another text date string.  It is  called  with  two  arguments,
+first  the  format  string, and second, the (INTEGER) date to be formatted.  Two
+sample format strings are: "%d/%m/%y" for dd/mm/yy, or "%m-%d" for mm-dd.
+
+The _f_o_r_m_a_t_t_i_m_e function is used to transform time values (like those returned by
+_r_e_p_o_r_t_t_i_m_e)  into  another  text  time  string.   For example, the format string
+"%H:%M:%S" produces HH:MM:SS.
+
+
+_1_3_._1_._3_._ _T_h_e_ _N_e_e_d_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n
+
+The _n_e_e_d function is used when it is desirable to  prevent  a  group  of  output
+lines  from  being  split  across a page break.  It takes the required number of
+lines as its argument.
+
+
+
+_1_3_._2_._ _R_e_p_o_r_t_ _M_o_d_e_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n_s
+
+Some of the tdb intrinsic functions make no sense in select mode.  The following
+functions may only be used in report mode.
+
+    Report Mode Intrinsic Function                Expr type returned
+    _______________________________________       __________________
+
+    _c_o_u_n_t([FIELD,...])                               INTEGER
+    _n_u_m_b_e_r(REF_FIELD: [FIELD,...])                   INTEGER
+    _s_u_m(REF_FIELD: [FIELD,...])                      REF_FIELD's type
+    _s_u_m_s_q_u_a_r_e_d(REF_FIELD: [FIELD,...])               REF_FIELD's type
+    _n_e_e_d(INTEGER_EXPR)                               INTEGER
+
+Note:  only  the FIELD(s) specified in the _a_g_g_r_e_g_a_t_e statement can be referenced
+in a tdb report program.
+
+Much of the explanation below is centered on data records  and  data  "buckets".
+For  the sake of simplicity, assume each physical data input line corresponds to
+one (logical) record - that is, a row.  That is, the fact that  two  data  input
+lines can map to one (logical) record is not important here.
+
+Each  time  an  input  record  is  read,  tdb  selects the FIELD(s) (columns) of
+interest (the ones in the _a_g_g_r_e_g_a_t_e statement, in report mode) and  places  them
+into  appropriate  data "buckets".  A bucket is simply a place where information
+about FIELD values is stored.  For example,  a  FIELD  named  fruit  might  have
+values of "apple", "banana", "cherry", and "quince".  If the _a_g_g_r_e_g_a_t_e statement
+contained this field, then a bucket would exist for each of these four values.
+
+
+
+
+
+
+
+1991-2015                              -9-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+The examples below refer to the following FIELD and data files:
+
+FIELD file          data file
+------------        --------------
+string fruit        apple     3.00
+float  price        banana    1.00
+                    banana    3.00
+                    cherry    3.00
+                    cherry    4.00
+                    cherry    5.00
+                    quince   10.00
+                    quince   10.00
+
+
+_1_3_._2_._1_._ _T_h_e_ _C_o_u_n_t_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n
+
+The  _c_o_u_n_t  function  returns  the  number  of  record(s)  that  fell  into  the
+appropriate  bucket.  This function requires zero or more FIELD argument(s), and
+must be  called  from  within  a  _f_o_r_e_a_c_h  loop  for  every  one  of  the  FIELD
+argument(s).   For  example, if it is called with three arguments, there must be
+three nested foreach loops with the same FIELDs.  The call  `_c_o_u_n_t()'  (with  no
+arguments)  returns  the total number of records.  Since it has no arguments, it
+may be called from anywhere in a program; that is, it need  not  be  within  any
+_f_o_r_e_a_c_h loop.
+
+For  the  example data above, _c_o_u_n_t(fruit) would return the following values for
+apple: 1, banana: 2, cherry: 3, and quince: 2.  Also, _c_o_u_n_t() is 8.
+
+
+_1_3_._2_._2_._ _T_h_e_ _N_u_m_b_e_r_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n
+
+The _n_u_m_b_e_r function calculates the _n_u_m_b_e_r of bucket(s) of a particular type  for
+the reference FIELD (REF_FIELD).
+
+Both  the REF_FIELD and the `:' are required.  Like _c_o_u_n_t, _n_u_m_b_e_r must be called
+from within a _f_o_r_e_a_c_h loop for all of the optional FIELDs.  REF_FIELD  must  not
+also appear in the optional FIELD list.
+
+For the above data, _n_u_m_b_e_r(fruit:) is 4, and _n_u_m_b_e_r(price:) is 5.
+
+
+_1_3_._2_._3_._ _T_h_e_ _S_u_m_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n
+
+The _s_u_m function calculates the (sum) total of all the individual values for the
+reference FIELD (REF_FIELD) for the  specified  bucket.   REF_FIELD  must  be  a
+numeric type (INTEGER or FLOAT).
+
+Both  the REF_FIELD and the `:' are required.  This function must also be called
+from within a _f_o_r_e_a_c_h loop for all of the optional FIELDs.  REF_FIELD  must  not
+also appear in the optional FIELD list.
+
+For the example data above, sum(price:) would return 39.0.
+
+
+_1_3_._2_._4_._ _T_h_e_ _S_u_m_s_q_u_a_r_e_d_ _I_n_t_r_i_n_s_i_c_ _F_u_n_c_t_i_o_n
+
+The  _s_u_m_s_q_u_a_r_e_d function calculates the (sum) total of the squares of all of the
+individual numeric data values for  the  reference  FIELD  (REF_FIELD)  for  the
+specified bucket.  REF_FIELD must be a numeric type (INTEGER or FLOAT).
+
+Both  the REF_FIELD and the `:' are required.  This function must also be called
+from within a _f_o_r_e_a_c_h loop for all of the optional FIELDs.
+
+1991-2015                             -10-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+The primary purpose of this function is to facilitate statistical analysis, such
+as standard deviation.
+
+For the example data above, sumsquared(price:) would return 269.0.
+
+
+_1_4_._ _t_d_b_ _R_e_s_e_r_v_e_d_ _V_a_r_i_a_b_l_e_s
+
+tdb  maintains  three INTEGER variables automatically in report mode.  These are
+listed below (followed by their default initial values):
+
+    - _p_a_g_e_l_e_n_g_t_h        (66)
+    - _p_a_g_e_n_u_m_b_e_r        (1)
+    - _l_i_n_e_n_u_m_b_e_r        (0)
+
+These variables are updated whenever tdb produces a line of output.   It  should
+never be necessary to assign _l_i_n_e_n_u_m_b_e_r.  Note, the "line number" is relative to
+the top of the current page, and  the  numbers  range  from  0  to  pagelength-1
+inclusive.  If it is desired for the first page of the report to start from some
+number other than 1, _p_a_g_e_n_u_m_b_e_r can  be  set  accordingly.   Similarly,  if  the
+length  of  the  page is not 66 lines, _p_a_g_e_l_e_n_g_t_h can be set to some other legal
+value.
+
+Do not assign any of these variables to non  integer  or  non  positive  values,
+otherwise, undesirable results will very likely occur.
+
+
+_1_5_._ _I_n_c_l_u_d_e_ _F_i_l_e_s
+
+It  is  possible to include one file in another in the same manner as with the C
+Preprocessor (CPP) `#include' mechanism.  To do this,  one  uses  the  following
+construction:
+
+#include "filename"
+
+Note  that  the  `#'  must  be  in  the first column, and there must be no space
+between the `#' and `include'.
+
+
+_1_6_._ _W_a_r_n_i_n_g_s
+
+
+
+_1_6_._1_._ _T_h_e_ _M_a_x_i_m_u_m_ _N_u_m_b_e_r_ _o_f_ _F_I_E_L_D_s_ _i_n_ _a_n_ _A_g_g_r_e_g_a_t_e_ _S_t_a_t_e_m_e_n_t
+
+For now, the maximum number of FIELDs that can be  used  in  any  one  _a_g_g_r_e_g_a_t_e
+statement  is  the number of bits in the C language type long - 32 or 64 in most
+cases.  Note that this restriction does not apply to the number of FIELDs in the
+"database",  nor does it apply to the number of FIELDs that can be referenced in
+select mode.
+
+
+_1_6_._2_._ _T_r_a_p_ _S_t_a_t_e_m_e_n_t_s_ _a_n_d_ _F_u_n_c_t_i_o_n_ _A_r_g_u_m_e_n_t_s
+
+If the _t_r_a_p statement is used within a user defined function, do NOT use any  of
+that  of  that  function's  parameters  in  either  of  _t_r_a_p's arguments (either
+directly or indirectly).  This is due to the fact that the _t_r_a_p function can  be
+called  at any time, and the same arguments that were on the stack when the _t_r_a_p
+was 'set' are unlikely to still be there when  the  _t_r_a_p  function  is  invoked.
+Some examples may make this clear:
+
+
+
+1991-2015                             -11-                        James S. Crook
+tdb - A Text Database Utility                                        Version 0.1
+
+     function myfunc (integerparam, stringparam) {
+         trap(0, pageheader("hi"));             /* OK, no use of parameters */
+
+         globalvar = integerparam + 2;
+         trap(globalvar, pageheader("hi"));     /* OK, no use of parameters */
+
+         trap(integerparam, pageheader("hi"));  /* ERROR, direct use */
+
+         trap(0, pageheader(stringparam));      /* ERROR, direct use */
+
+                                                /* ERROR, indirect use */
+         trap(myotherfunc(10*integerparam/2), pageheader("hi"));
+     }
+
+
+_1_7_._ _C_o_p_y_r_i_g_h_t_ _a_n_d_ _L_i_c_e_n_s_e
+
+Copyright (C)  1991-2015 James S. Crook
+
+Permission  is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or  any  later  version
+published by the Free Software Foundation; with no Invariant Sections, no Front-
+Cover Texts, and no Back-Cover Texts.  A copy of the license is included in  the
+section entitled "GNU Free Documentation License".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1991-2015                             -12-                        James S. Crook

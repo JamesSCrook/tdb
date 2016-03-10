@@ -1,0 +1,42 @@
+The following example directories contain tdb files that are to be executed as
+follows:
+
+groceries:
+quotes:
+tdbquick:
+timesheets:
+university:
+    scr data | diff OUT.REF -		This should produce no output.
+
+
+budget:
+    scr1 data | diff OUT.REF -		This should produce no output.
+    scr2 data | diff OUT.REF -		This should produce no output.
+
+
+bulk:
+    scr		This takes a while to create some unsorted data, which is then
+		sorted in both ascending and descending order.  tdb is then
+		called six times, as follows:)
+
+		    input file     data file
+		    ----------     ---------
+		    val1val2.r     data.unsorted
+		    val1val2.r     data.ascending
+		    val1val2.r     data.descending
+
+		    val2val1.r     data.unsorted
+		    val2val1.r     data.ascending
+		    val2val1.r     data.descending
+
+		The output produced is a bunch of status message, plus any
+		output statistics produced by the 'time' command.  At the end
+		of the each triple, the following lines should appear:
+
+		    checking output differences:
+		    (There should be nothing between the lines)
+		    ----------------- Ascending differences -------------------
+		    ----------------- Descending differences ------------------
+		    ----------------- End of difference checking --------------
+
+		Note: the file OUT.REF contains stdout _only_!

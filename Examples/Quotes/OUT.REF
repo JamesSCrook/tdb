@@ -1,0 +1,9 @@
+ 0 : quotestring=<>
+ 1 : quotestring=<noquotes>
+ 2 : quotestring=<normal_normal>
+ 3 : quotestring=<"escaped_normal">
+ 4 : quotestring=<normal_escaped"
+>
+ 5 : quotestring=<"escaped_escaped">
+ 6 : quotestring=<escaped quote within " quotes>
+ 7 : quotestring=<escaped quotes within " "" " quotes>

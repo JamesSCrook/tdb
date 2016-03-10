@@ -1,0 +1,8 @@
+string	chain		#  Franklin's
+string	location	#  Pennant Hills
+string	item            #  beer    coke    bananas    cereal
+float	price           #  8.00   48.00       3.95     3.55
+int	quantity        #     6      24          1        1
+float	size            # 0.375   1.125        1.0    500.0
+string	unit            #    ml      ml         kg        g
+int	date		# 19961231

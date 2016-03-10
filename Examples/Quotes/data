@@ -1,0 +1,8 @@
+0 ""
+1 noquotes
+2 "normal_normal"
+3 \"escaped_normal"
+4 "normal_escaped\"
+5 \"escaped_escaped\"
+6 "escaped quote within \" quotes"
+7 "escaped quotes within \" \"\" \" quotes"

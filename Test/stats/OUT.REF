@@ -1,0 +1,46 @@
+Name            mass
+______________  _____
+Alfred E. Newman  20.4
+Betty Bloggs    100.0
+Bill Bloggs     100.0
+Fred Bloggs     100.0
+James S. Crook   70.1
+Martha Bloggs   100.0
+Richard M. Nixon  50.2
+Sam Bloggs      100.0
+Spiro T. Agnew   30.3
+---------------------
+tot mass:       671.0
+---------------------
+count:              9
+---------------------
+average:        74.56
+---------------------
+sumsqrd:     58768.30
+---------------------
+sample std dev: 31.17
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Name            score    height
+______________  _____    ______
+Martha Bloggs       9      170
+Betty Bloggs        8      170
+Bill Bloggs         7      170
+Sam Bloggs          6      170
+Fred Bloggs         5      170
+Alfred E. Newman     4       80
+Spiro T. Agnew      3       91
+Richard M. Nixon     2      154
+James S. Crook      1      178
+------------------------------
+tot:               45     1353
+------------------------------
+count:              9
+------------------------------
+average:         5.00   150.33
+------------------------------
+sumsqrd:          285   214581
+------------------------------
+sample std dev:  2.58    35.25
+------------------------------
+popul std dev:   2.74    37.38
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

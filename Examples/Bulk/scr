@@ -1,0 +1,58 @@
+#!/bin/sh
+
+echo "This will take a minute... Perhaps it's time for a coffee..."
+
+PRECMD=""
+
+UNSORTEDDATA=data.unsorted
+ASCSORTEDDATA=data.asc
+DESCSORTEDDATA=data.desc
+UNSORTEDOUT12=out.unsorted12
+ASCSORTEDOUT12=out.ascsorted12
+DESCSORTEDOUT12=out.descsorted12
+UNSORTEDOUT21=out.unsorted21
+ASCSORTEDOUT21=out.ascsorted21
+DESCSORTEDOUT21=out.descsorted21
+
+if [ -f $UNSORTEDDATA ]; then
+    echo "using data generated previously"
+else
+    echo "generating data - this may take a while"
+    genunsorteddata > $UNSORTEDDATA
+    echo "sorting data ascending"
+    sort $UNSORTEDDATA > $ASCSORTEDDATA
+    echo "sorting data descending"
+    sort -r $UNSORTEDDATA > $DESCSORTEDDATA
+fi
+
+echo "unsorted (not at all random, but it'll do):"
+$PRECMD tdb -v -f fields -r val1val2.r $UNSORTEDDATA > $UNSORTEDOUT12
+echo "ascending:"
+$PRECMD tdb -v -f fields -r val1val2.r $ASCSORTEDDATA > $ASCSORTEDOUT12
+echo "descending:"
+$PRECMD tdb -v -f fields -r val1val2.r $DESCSORTEDDATA > $DESCSORTEDOUT12
+echo "checking output differences:"
+echo "(There should be nothing between the lines)"
+echo "----------------- Ascending differences -------------------"
+diff $UNSORTEDOUT12 $ASCSORTEDOUT12
+echo "----------------- Descending differences ------------------"
+diff $UNSORTEDOUT12 $DESCSORTEDOUT12
+echo "----------------- End of difference checking --------------"
+
+echo "unsorted (not at all random, but it'll do):"
+$PRECMD tdb -v -f fields -r val2val1.r $UNSORTEDDATA > $UNSORTEDOUT21
+echo "ascending:"
+$PRECMD tdb -v -f fields -r val2val1.r $ASCSORTEDDATA > $ASCSORTEDOUT21
+echo "descending:"
+$PRECMD tdb -v -f fields -r val2val1.r $DESCSORTEDDATA > $DESCSORTEDOUT21
+echo "checking output differences:"
+echo "(There should be nothing between the lines)"
+echo "----------------- Ascending differences -------------------"
+diff $UNSORTEDOUT21 $ASCSORTEDOUT21
+echo "----------------- Descending differences ------------------"
+diff $UNSORTEDOUT21 $DESCSORTEDOUT21
+echo "----------------- End of difference checking --------------"
+
+rm $UNSORTEDDATA $ASCSORTEDDATA $DESCSORTEDDATA
+rm $UNSORTEDOUT12 $ASCSORTEDOUT12 $DESCSORTEDOUT12
+rm $UNSORTEDOUT21 $ASCSORTEDOUT21 $DESCSORTEDOUT21

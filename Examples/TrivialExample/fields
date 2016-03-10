@@ -1,0 +1,7 @@
+string metrocity
+string station
+int    date
+int    low_temp
+int    hi_temp
+int    humidity
+int    pressure

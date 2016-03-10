@@ -1,0 +1,11 @@
+#!/bin/sh
+
+CWD=`pwd`
+
+for DIR in misc stats daysdiff T1 T2 T3 T4
+do
+    echo "----------------- $DIR --------------------"
+    cd $CWD/$DIR
+    ./scr | diff OUT.REF -
+done
+echo "-------------------------------------"

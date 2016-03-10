@@ -1,0 +1,11 @@
+string	mod	# model code
+string	ser	# serial number
+int	dat	# date
+string	wks	# workstation
+string	opr	# operator
+string	crf	# component reference
+string	pno	# part number
+string	fcd	# fault code
+string	fps	# fault position [optional]
+int	tim	# time
+string	com	# comment [optional]

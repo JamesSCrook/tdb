@@ -1,0 +1,19 @@
+#!/bin/sh
+
+BILLTITLE="Productive Categories"
+ALLTITLE="All Categories"
+TIMESHTTITLE="Weekly Timesheet"
+
+tdb -f admin/fields -s admin/week.s -I FIRSTWEEK=4 -I LASTWEEK=5 data | \
+    tdb -f admin/fields -s admin/productive.s - | \
+    tdb -f admin/fields -r admin/consulting.r -S "TITLE=$BILLTITLE" -
+
+tdb -f admin/fields -s admin/productive.s data | \
+    tdb -f admin/fields -r admin/consulting.r -S "TITLE=$BILLTITLE" -
+
+tdb -f admin/fields -s admin/week.s -I FIRSTWEEK=4 -I LASTWEEK=5 data | \
+    tdb -f admin/fields -r admin/week.r -S "TITLE=$TIMESHTTITLE" \
+    -IREVERSEFLAG=1 -
+
+tdb -f admin/fields -r admin/week.r -S "TITLE=$TIMESHTTITLE" \
+    -IREVERSEFLAG=0 data

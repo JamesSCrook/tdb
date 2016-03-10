@@ -1,0 +1,5 @@
+for REP in avgexpend.r avgunitpr.r avgunitprsrt.r
+do
+    echo "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<$REP>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    tdb -f fields -r $REP data
+done

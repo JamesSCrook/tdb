@@ -1,0 +1,68 @@
+count()=8
+-------------- count(fruit) ------------------------
+apple           1
+banana          2
+cherry          3
+quince          2
+-------------- count(price) ------------------------
+    1.00        1
+    3.00        3
+    4.00        1
+    5.00        1
+   10.00        2
+-------------- count(fruit,price) ------------------------
+              1.00    3.00    4.00    5.00   10.00
+apple          0       1       0       0       0
+banana         1       1       0       0       0
+cherry         0       1       1       1       0
+quince         0       0       0       0       2
+-------------- number(fruit:) ------------------------
+       4 :     ( apple banana cherry quince )
+-------------- number(price:) ------------------------
+       5 :     ( 1.00 3.00 4.00 5.00 10.00 )
+-------------- number(price: fruit) ------------------------
+apple           1 :     ( 3.00 )
+banana          2 :     ( 1.00 3.00 )
+cherry          3 :     ( 3.00 4.00 5.00 )
+quince          1 :     ( 10.00 )
+-------------- number(fruit: price) ------------------------
+  1.00        1 :     ( banana )
+  3.00        3 :     ( apple banana cherry )
+  4.00        1 :     ( cherry )
+  5.00        1 :     ( cherry )
+ 10.00        1 :     ( quince )
+-------------- sum(price:) ------------------------
+39.00
+-------------- sum(price: fruit) ------------------------
+apple      3.00 :     ( 1*3.00 )
+banana     4.00 :     ( 1*1.00 1*3.00 )
+cherry    12.00 :     ( 1*3.00 1*4.00 1*5.00 )
+quince    20.00 :     ( 2*10.00 )
+-------------- sumsquared(price:) ------------------------
+269.00
+-------------- sumsquared(price: fruit) ------------------------
+apple      9.00 :     ( 1*9.00 )
+banana    10.00 :     ( 1*1.00 1*9.00 )
+cherry    50.00 :     ( 1*9.00 1*16.00 1*25.00 )
+quince   200.00 :     ( 2*100.00 )
+-------------- lookup ------------------------
+apple   
+  lookup(apple, file)   =Tasmania
+  lookup(apple, file, 1)=apple
+  lookup(apple, file, 2)=Tasmania
+  lookup(apple, file, 3)=Temperate
+banana  
+  lookup(banana, file)   =Brazil
+  lookup(banana, file, 1)=banana
+  lookup(banana, file, 2)=Brazil
+  lookup(banana, file, 3)=Tropical
+cherry  
+  lookup(cherry, file)   =cherry
+  lookup(cherry, file, 1)=cherry
+  lookup(cherry, file, 2)=cherry
+  lookup(cherry, file, 3)=cherry
+quince  
+  lookup(quince, file)   =Dunno
+  lookup(quince, file, 1)=quince
+  lookup(quince, file, 2)=Dunno
+  lookup(quince, file, 3)=Me either

@@ -1,0 +1,6 @@
+int	week
+int	date
+string	dayofweek
+string	category
+float	days
+string	comment

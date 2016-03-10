@@ -1,0 +1,23 @@
+#### general faults
+A  "Alignment"
+B  "Bad comp"
+E  "Equip prob"
+F  "Faulty"
+M  "Missing"
+R  "Rev/rotate"
+T  "Tolerance"
+U  "Unseated"
+W  "Wrong"
+OT "Other prob"
+DF "Design Flt"
+
+#### solder faults
+CO "Cop Open"
+CS "Cop Short"
+SC "Sold Cold"
+SO "Sold Open"
+SP "sol SPlash"
+SS "Sold Short"
+
+#### test point problems
+TP "Test Point"

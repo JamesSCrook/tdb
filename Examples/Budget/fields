@@ -1,0 +1,7 @@
+string	category
+string	item
+string	type	# actual or plan
+float	price 
+int	year
+int	month
+int	day

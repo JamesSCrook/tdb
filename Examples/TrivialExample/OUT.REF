@@ -1,0 +1,36 @@
+  date       low    high
+  --------   -----  -----
+Adelaide
+  20000420   11.0   20.0 Cutlr:1 Port:1
+  20000421   12.0   19.0 Cutlr:1 Port:1
+  20000422   13.0   21.0 Cutlr:1 Port:1
+  20000423   10.0   18.0 Cutlr:1 Port:1
+  20000424   14.0   22.0 Cutlr:1 Port:1
+  20000425   12.0   20.0 Cutlr:2 Port:2
+  --------   -----  -----
+  Debug     168    280
+  Average    12.0   20.0
+
+Melbourne
+  20000420   11.0   20.0 Burwd:1 Crlnfd:1
+  20000421   12.0   19.0 Burwd:1 Crlnfd:1
+  20000422   13.0   21.0 Burwd:1 Crlnfd:1
+  20000423   10.0   18.0 Burwd:1 Crlnfd:1
+  20000424   14.0   22.0 Burwd:1 Crlnfd:1
+  20000425   12.0   20.0 Burwd:1 Crlnfd:1
+  --------   -----  -----
+  Debug     144    240
+  Average    12.0   20.0
+
+Sydney
+  20000420   11.0   20.0 PenHls:1 Prmata:1
+  20000421   12.0   19.0 PenHls:1 Prmata:1
+  20000422   13.0   21.0 PenHls:1 Prmata:1
+  20000423   10.0   18.0 PenHls:1 Prmata:1
+  20000424   14.0   22.0 PenHls:1 Prmata:1
+  20000425   12.0   20.0 PenHls:1 Prmata:1
+  20000426   12.0   20.0 PenHls:1 Prmata:1
+  --------   -----  -----
+  Debug     168    280
+  Average    12.0   20.0
+

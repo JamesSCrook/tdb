@@ -1,0 +1,46 @@
+#!/bin/sh
+
+FILES="
+    -S wksfile=../admin/wks
+    -S oprfile=../admin/opr
+    -S fcdexpansionfile=../admin/fcdexpansion
+    -S modfile=../admin/mod
+    -S pnofile=../admin/parts
+"
+
+FIELDS="-f ../admin/fields_orig"
+STARTDATE=19901111
+ENDDATE=19901115
+export STARTDATE ENDDATE
+
+##### DM: Defects Missed #####################################################
+tdb $FIELDS -s DM.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r DM.r -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE -
+
+##### WPR: Weekly Production Report ##########################################
+tdb $FIELDS -s WPR.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WPR.r -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE -
+
+##### WV1: Weekly Visulal report number 1 ####################################
+tdb $FIELDS -s WV.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WV1.r -I ENDDATE=$ENDDATE -
+
+##### WR1: Weekly Repair report number 1 #####################################
+tdb $FIELDS -s WR.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WR1.r -I ENDDATE=$ENDDATE -
+
+##### WV2: Weekly Visulal report number 2 ####################################
+tdb $FIELDS -s WV.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WV2.r -I ENDDATE=$ENDDATE -
+
+##### WR2: Weekly Repair report number 2 #####################################
+tdb $FIELDS -s WR.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WR2.r -I ENDDATE=$ENDDATE -
+
+##### WV3: Weekly Visulal report number 3 ####################################
+tdb $FIELDS -s WV.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WV3.r -I ENDDATE=$ENDDATE -
+
+##### WR3: Weekly Repair report number 3 #####################################
+tdb $FIELDS -s WR.s -I STARTDATE=$STARTDATE -I ENDDATE=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WR3.r -I ENDDATE=$ENDDATE -

@@ -1,0 +1,20 @@
+This will take a minute... Perhaps it's time for a coffee...
+generating data - this may take a while
+sorting data ascending
+sorting data descending
+unsorted (not at all random, but it'll do):
+ascending:
+descending:
+checking output differences:
+(There should be nothing between the lines)
+----------------- Ascending differences -------------------
+----------------- Descending differences ------------------
+----------------- End of difference checking --------------
+unsorted (not at all random, but it'll do):
+ascending:
+descending:
+checking output differences:
+(There should be nothing between the lines)
+----------------- Ascending differences -------------------
+----------------- Descending differences ------------------
+----------------- End of difference checking --------------

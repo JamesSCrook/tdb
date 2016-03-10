@@ -1,0 +1,38 @@
+#!/bin/sh
+
+echo "this data is not used" | \
+awk '{
+			# produces grouplimit ^ ngroups values
+    ngroups = 7;
+    grouplimit = 9;  # (must be <= 10)
+
+    groupidx = 0;
+    while (groupidx < ngroups) {
+	a[groupidx] = 0;
+	groupidx++;
+    }
+
+    groupidx = 0;
+    while (groupidx < ngroups) {
+
+	sum = 1;
+	idx = 0;
+	while (idx < ngroups) {
+	    printf("%02d", a[idx]);
+	    sum += a[idx];
+	    idx++;
+	}
+	printf(" %5d\n", sum);
+
+	groupidx = 0;
+	while (groupidx < ngroups) {
+	    if (a[groupidx] < grouplimit-1) {
+		a[groupidx]++;
+		break;
+	    } else {
+		a[groupidx] = 0;
+		groupidx++;
+	    }
+	}
+    }
+}'

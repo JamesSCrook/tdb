@@ -1,0 +1,42 @@
+#!/bin/sh
+
+ARGS="
+    -S oprfile=../admin/opr
+    -S modfile=../admin/mod
+    -S fcsdir=../admin/
+    -S crffile=../admin/crffiledir/cpu_6
+"
+
+TMPFILE=/tmp/foo.$$
+
+FIELDS="-f ../admin/fields_orig"
+
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<A.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r A.r \
+    -ISECSPERHOUR=3600 -FPI=3.14159 -Fe=2.71 "-Sname=James S. Crook" data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<B.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r B.r data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<C.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r C.r data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<D.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r D.r data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<E.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -s E.s -ISTARTDATE=19901112 -IENDDATE=19901113 data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<F.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r F.r data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<G.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r G.r data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<H.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r H.r data
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<I.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r I.r $FILES data
+
+# toss stdout to ensure all the output is going to the output file
+
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<J.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r J.r $FILES -o $TMPFILE data > /dev/null
+cat $TMPFILE
+echo '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<K.r>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+tdb $FIELDS $ARGS -r K.r $FILES -o $TMPFILE data > /dev/null
+cat $TMPFILE
+rm  $TMPFILE

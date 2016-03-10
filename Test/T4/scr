@@ -1,0 +1,69 @@
+#!/bin/sh
+
+FIELDS="-f ../admin/fields_orig"
+REPDATE="19921221"  # 21/12/92
+REPTIME="52860"   # 14:41
+STARTDATE=19920622
+ENDDATE=19920626
+export STARTDATE ENDDATE
+
+FILES="
+    -S wksfile=../admin/wks
+    -S oprfile=../admin/opr
+    -S fcdexpansionfile=../admin/fcdexpansion
+    -S modfile=../admin/mod
+    -S pnofile=../admin/parts
+"
+TMPFILE=/tmp/foo.$$
+
+VIS1="Visual Inspection/Rework Summary (1) Weekly Report"
+VIS2="Visual Inspection/Rework Summary (2) Weekly Report"
+VIS3="Visual Inspection/Rework Summary (3) Weekly Report"
+REP1="Repair Area Summary (1) Weekly Report"
+REP2="Repair Area Summary (2) Weekly Report"
+REP3="Repair Area Summary (3) Weekly Report"
+
+##### DM: Defects Missed #####################################################
+tdb $FIELDS -s DM.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+tdb $FIELDS -r DM.r $FILES \
+    -I startdate=$STARTDATE -I enddate=$ENDDATE -
+
+##### WPR: Weekly Production Report ##########################################
+tdb $FIELDS -s WPR.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+tdb $FIELDS -r WPR.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I startdate=$STARTDATE -I enddate=$ENDDATE -
+
+
+##### Weekly VISULAL DATA ####################################################
+tdb $FIELDS -s WV.s -I startdate=$STARTDATE -I enddate=$ENDDATE -o $TMPFILE data
+
+##### WV1: Weekly Visulal report number 1 ##########################
+tdb $FIELDS -r WS1.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -S "titlestr=$VIS1" -I startdate=$STARTDATE -I enddate=$ENDDATE $TMPFILE
+
+##### WV2: Weekly Visulal report number 2 ##########################
+tdb $FIELDS -r WS2.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -S "titlestr=$VIS2" -I startdate=$STARTDATE -I enddate=$ENDDATE $TMPFILE
+
+##### WV3: Weekly Visulal report number 3 ##########################
+tdb $FIELDS -r WS3.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -S "titlestr=$VIS3" -I startdate=$STARTDATE -I enddate=$ENDDATE $TMPFILE
+
+
+##### Weekly REPAIR DATA #####################################################
+tdb $FIELDS -s WR.s -I startdate=$STARTDATE -I enddate=$ENDDATE -o $TMPFILE data
+
+##### WR1: Weekly Repair report number 1 ###########################
+tdb $FIELDS -r WS1.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -S "titlestr=$REP1" -I startdate=$STARTDATE -I enddate=$ENDDATE $TMPFILE
+
+##### WR2: Weekly Repair report number 2 ###########################
+tdb $FIELDS -r WS2.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -S "titlestr=$REP2" -I startdate=$STARTDATE -I enddate=$ENDDATE $TMPFILE
+
+##### WR3: Weekly Repair report number 3 ###########################
+tdb $FIELDS -r WS3.r $FILES -I repdate=$REPDATE -I reptime=$REPTIME \
+    -S "titlestr=$REP3" -I startdate=$STARTDATE -I enddate=$ENDDATE $TMPFILE
+
+
+rm $TMPFILE

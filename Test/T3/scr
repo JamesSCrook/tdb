@@ -1,0 +1,58 @@
+#!/bin/sh
+
+FIELDS="-f ../admin/fields_orig"
+REPDATE="19921221"  # 21/12/92
+REPTIME="52860"   # 14:41
+STARTDATE=19920622
+ENDDATE=19920626
+export STARTDATE ENDDATE
+
+TITLESTR="ACME Manufacturing Report"
+
+FILES="
+    -S wksfile=../admin/wks
+    -S oprfile=../admin/opr
+    -S fcdexpansionfile=../admin/fcdexpansion
+    -S modfile=../admin/mod
+    -S pnofile=../admin/parts
+"
+
+##### DM: Defects Missed #####################################################
+tdb $FIELDS -s DM.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r DM.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I startdate=$STARTDATE -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WPR: Weekly Production Report ##########################################
+tdb $FIELDS -s WPR.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WPR.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I startdate=$STARTDATE -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WV1: Weekly Visulal report number 1 ####################################
+tdb $FIELDS -s WV.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WV1.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WR1: Weekly Repair report number 1 #####################################
+tdb $FIELDS -s WR.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WR1.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WV2: Weekly Visulal report number 2 ####################################
+tdb $FIELDS -s WV.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WV2.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WR2: Weekly Repair report number 2 #####################################
+tdb $FIELDS -s WR.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WR2.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WV3: Weekly Visulal report number 3 ####################################
+tdb $FIELDS -s WV.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WV3.r -I repdate=$REPDATE -I reptime=$REPTIME \
+    -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
+
+##### WR3: Weekly Repair report number 3 #####################################
+tdb $FIELDS -s WR.s -I startdate=$STARTDATE -I enddate=$ENDDATE data | \
+    tdb $FIELDS $FILES -r WR3.r \
+    -I enddate=$ENDDATE -S "titlestr=$TITLESTR" -
