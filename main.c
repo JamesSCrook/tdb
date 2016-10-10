@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -37,7 +37,7 @@ Opmode opmode = ERRORMODE;
 
 #define USAGETEXT "\
 \n\
-usage (v0.1.1):\n\
+usage (v0.1.2):\n\
 \n\
 %s -f field_file -s select_file [OPTIONS] data_file [...]\n\
     or\n\
@@ -57,7 +57,7 @@ Notes:\n\
   Use `-' to specify stdin as a `data_file'\n\
   Define variables like this: -I foobar=42     (ie, no spaces around the `=')\n\
 \n\
-tdb Copyright (C) 1991-2015 James S. Crook\n\
+tdb Copyright (C) 1991-2016 James S. Crook\n\
 This program comes with ABSOLUTELY NO WARRANTY.\n\
 This is free software, and you are welcome to redistribute it under certain conditions.\n\
 This program is licensed under the terms of the GNU General Public License as published\n\

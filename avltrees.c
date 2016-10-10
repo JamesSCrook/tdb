@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -76,10 +76,10 @@ addaxisnode(int depth, Field *aggrfldptr)
     extern Axistbl *axistbl;
     extern char **inplineargptrtbl;
     Axisnode *curaxisptr, **curaxisptrptr, *newaxisptr;
-    Axisnode **possaxisptrptr, *axisptrstk[MAXAVLDEPTH];
-    int r, didx, prevbalfact, stkdepth;
+    Axisnode **possaxisptrptr = NULL, *axisptrstk[MAXAVLDEPTH];
+    int didx, prevbalfact;
+    int r = 0, stkdepth = 0;
 
-    stkdepth = 0;
     curaxisptrptr = &axistbl[depth].rootptr;
     curaxisptr =     axistbl[depth].rootptr;
     while (curaxisptr != NULL) {
@@ -169,12 +169,12 @@ adddatanode(Datanode **dataptrptr, Field *aggrfldptr, int depth)
     extern int statsinfofldctr;
     extern Statsinfofld *statsinfofldtbl;
     Datanode *curdataptr, **curdataptrptr, *newdataptr;
-    Datanode **possdataptrptr, *dataptrstk[MAXAVLDEPTH];
+    Datanode **possdataptrptr = NULL, *dataptrstk[MAXAVLDEPTH];
     Axisnode *axisptr;
-    int r, didx, prevbalfact, stkdepth, statsfldidx;
+    int didx, prevbalfact, statsfldidx;
     Intfltstr t;
+    int r = 0, stkdepth = 0;
 
-    stkdepth = 0;
     curdataptrptr = dataptrptr;
     curdataptr =   *dataptrptr;
     while (curdataptr != (Datanode*)NULL) {

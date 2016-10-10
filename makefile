@@ -1,6 +1,6 @@
 ################################################################################
 #   tdb: a text database processing tool
-#   Copyright (c) 1991-2015 James S. Crook
+#   Copyright (c) 1991-2016 James S. Crook
 #
 #   This file is part of tdb.
 #
@@ -21,6 +21,7 @@
 ##### Linux variables #############
 CC			= gcc
 CFLAGS			= -s -O -D_FLEX -D_BISON
+CFLAGS			= -s -O2 -pedantic -Wextra -Wshadow -Wpointer-arith -Wcast-qual -D_FLEX -D_BISON
 LEXICAL_ANALYZER	= flex	
 PARSER_GENERATOR	= bison
 PARS_GEN_FLAGS		= -d -o y.tab.c
@@ -33,9 +34,6 @@ PARS_GEN_FLAGS		= -d -o y.tab.c
 #PARS_GEN_FLAGS		= -d
 
 ########## common variables #########
-LINT			= lint
-LINTFLAGS		= -u
-#LINTFLAGS		= -uabhx
 PROG			= tdb
 
 # Yacc dependent/independent sources & objects
@@ -62,9 +60,6 @@ lex.yy.c: tdb.l
 	$(LEXICAL_ANALYZER) tdb.l
 
 avltrees.o var.o: avlbal.h
-
-lint:
-	$(LINT) $(LINTFLAGS) $(TDBSRCS)
 
 clean: 
 	rm -f $(ALLOBJS) lex.yy.c y.tab.h y.tab.c y.output core

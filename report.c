@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -709,7 +709,7 @@ static void
 sortaxisarray(Exprnode *exprptr, int newdepth, Flag reverseflag)
 {
     Exprnode result;
-    int (*cmpfuncptr)();
+    int (*cmpfuncptr)() = NULL;
     int i;
 
     axistbl[newdepth].first = 0;

@@ -1,8 +1,17 @@
-tdb-0.0.1 Initial version
+tdb-0.0.1
+    Initial version
 
-tdb-0.0.2 Replaced re_exec and re_comp with regexec and regcomp
+tdb-0.0.2
+    Replaced re_exec and re_comp with regexec and regcomp
 
-tdb-0.1.0 Added new command line options
-	  arbitrary delimiter(s), e.g., "-d ," for CSV files
-	  arbitrary quote character, e.g., "-q '|'"
-	  The first new feature in 24 years! (You can't rush these things...)
+tdb-0.1.1
+    Added new command line options
+    arbitrary delimiter(s), e.g., "-d ," for CSV files
+    arbitrary quote character, e.g., "-q '|'"
+    The first new feature in 24 years! (You can't rush these things...)
+
+tdb-0.1.2	Mon Oct 10 21:11:51 AEDT 2016
+    Added variable initilizations to make gcc using lots more checking
+    happier - before: -O, now:
+    -O2 -pedantic -Wextra -Wshadow -Wpointer-arith -Wcast-qual -D_FLEX -D_BISON
+    There is no functional change in this release.

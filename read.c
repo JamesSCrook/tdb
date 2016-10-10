@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -64,7 +64,7 @@ readfileselrej(char *filename, FILE *data_fp)
 {
     extern FILE *output_fp;
     char inpline[2][MAXLINELEN], saveinpline[2][MAXLINELEN];
-    int secpartctr, nargsfirst, nargssecond, nargs, linectr = 0, inplineidx = 0;
+    int nargssecond, nargs, nargsfirst = 0, secpartctr = 0, linectr = 0, inplineidx = 0;
     extern int nfields;
 
     nargs = nfields;
@@ -185,7 +185,7 @@ readfilereport(char *filename, FILE *data_fp)
     Joinfldnode *joinfldptr;
     Joinfldargnode *joinfldargptr;
     char inpline[2][MAXLINELEN];
-    int fldidx, nargsfirst, nargssecond, nargs, linectr = 0, inplineidx = 0;
+    int fldidx, nargssecond, nargs, nargsfirst = 0, linectr = 0, inplineidx = 0;
 
     nargs = nfields;
     while (fgets(inpline[inplineidx], MAXLINELEN, data_fp) != NULL) {

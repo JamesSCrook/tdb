@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -106,7 +106,7 @@ readfieldfile(char *fieldfilename)
 Lookup a field name in the field table.
 *******************************************************************************/
 int
-lookupfieldname(UCHAR *name)
+lookupfieldname(char *name)
 {
     int idx;
 

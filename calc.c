@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -41,7 +41,7 @@ Evaluate binary operations on two integer arguments.
 int
 ibinop(int i1, int operator, int i2)
 {
-    int result;
+    int result = 0;
 
     switch (operator) {
 	case ADD:	result = i1 +  i2; break;
@@ -181,7 +181,7 @@ Evaluate unary operations on one integer argument.
 int
 iunaryop(int operator, int i)
 {
-    int result;
+    int result = 0;
 
     switch (operator) {
 	case ADD:	result =  i; break;
@@ -200,7 +200,7 @@ Evaluate unary operations on one float argument.
 float
 funaryop(int operator, float f)
 {
-    float result;
+    float result = 0.0;
 
     switch (operator) {
 	case ADD:	result =  f; break;
@@ -218,7 +218,7 @@ Evaluate unary operations on one float argument.
 float
 mathfunc(int operator, double d)
 {
-    double result;
+    double result = 0.0;
 
     switch (operator) {
 	case SIN:	result = sin(d); break;
@@ -247,7 +247,7 @@ getreportdt(int fldidx)
 {
     struct tm *ts, *localtime();
     time_t ti;
-    int dt;
+    int dt = 0;
 
     ti = time((time_t*)0);
     ts = localtime(&ti);

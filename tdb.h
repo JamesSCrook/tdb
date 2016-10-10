@@ -1,6 +1,6 @@
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -46,8 +46,6 @@
 #define MIN(a,b) ((a) < (b) ? (a) : (b))
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 #define ABS(x)   ((x) > 0   ? (x) :-(x))
-
-#define UCHAR unsigned char  /* to keep lint _AND_ my ANSI2K+R program happy */
 
 #define WHITESPACE(c)   ((((c)==' ')||((c)=='\t')||((c)=='\n')) ? TRUE : FALSE)
 
@@ -353,7 +351,7 @@ int fbinop(float f1, int operator, float f2, float *floatptr, int *intptr);
 int getreportdt(int fldidx);
 int ibinop(int i1, int operator, int i2);
 int iunaryop(int operator, int i);
-int lookupfieldname(UCHAR *name);
+int lookupfieldname(char *name);
 int main(int argc, char *argv[]);
 int mystrcmp(char *str1, char *str2);
 int need(Exprnode *exprptr);

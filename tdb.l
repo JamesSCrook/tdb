@@ -1,7 +1,7 @@
 %{
 /*******************************************************************************
     tdb: a text database processing tool
-    Copyright (c) 1991-2015 James S. Crook
+    Copyright (c) 1991-2016 James S. Crook
 
     This file is part of tdb.
 
@@ -59,7 +59,7 @@ static int     commentctr = 0;
 /*****************************************************************************
 *****************************************************************************/
 int
-cppinclude(UCHAR *str)
+cppinclude(char *str)
 {
     char *filename, *endptr;
 
@@ -103,7 +103,7 @@ This function copies the string 'from' to the string 'to' but also replaces
 appropriate character (eg, "\n" is mapped to the newline character).
 *****************************************************************************/
 static void
-do_escapes(char *to, UCHAR *from)
+do_escapes(char *to, char *from)
 {
     while (*from) {
 	if ((*from == '\\') && *(from+1)) {
