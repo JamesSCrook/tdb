@@ -21,7 +21,7 @@
 ##### Linux variables #############
 CC			= gcc
 CFLAGS			= -s -O -D_FLEX -D_BISON
-CFLAGS			= -s -O2 -pedantic -Wextra -Wshadow -Wpointer-arith -Wcast-qual -D_FLEX -D_BISON
+#CFLAGS			= -s -O2 -pedantic -Wextra -Wshadow -Wpointer-arith -Wcast-qual -D_FLEX -D_BISON
 LEXICAL_ANALYZER	= flex	
 PARSER_GENERATOR	= bison
 PARS_GEN_FLAGS		= -d -o y.tab.c
